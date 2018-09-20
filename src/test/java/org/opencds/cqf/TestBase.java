@@ -98,4 +98,10 @@ public class TestBase {
         applyTests.PlanDefinitionApplyTest();
         applyTests.ActivityDefinitionApplyTest();
     }
+
+    @Test
+    public void runQdmTests() {
+        QdmDataProviderTests qdmTests = new QdmDataProviderTests(server);
+        qdmTests.SimpleEncounterPerformedTest();
+    }
 }

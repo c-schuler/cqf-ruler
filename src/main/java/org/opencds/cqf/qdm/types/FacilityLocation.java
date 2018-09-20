@@ -15,7 +15,7 @@ public class FacilityLocation extends Type implements ICompositeType {
     public Code getCode() {
         return code;
     }
-    public FacilityLocation setNumerator(Code code) {
+    public FacilityLocation setCode(Code code) {
         this.code = code;
         return this;
     }
