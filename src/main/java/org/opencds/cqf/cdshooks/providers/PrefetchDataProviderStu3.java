@@ -40,7 +40,7 @@ public class PrefetchDataProviderStu3 extends FhirDataProviderStu3 {
             return Collections.emptyList();
         }
 
-        // no resources or no filtering -> return list
+        // no model or no filtering -> return list
         if (resourcesOfType.isEmpty() || (dateRange == null && codePath == null)) {
             return resourcesOfType;
         }

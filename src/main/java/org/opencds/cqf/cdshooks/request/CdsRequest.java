@@ -64,7 +64,7 @@ public abstract class CdsRequest {
     public List<CdsCard> process(CdsHooksProviders providers) {
         // cannot use this server for DSTU2 resource retrieval TODO - support DSTU2
         if (isFhirServerLocal() && providers.getVersion() == CdsHooksProviders.FhirVersion.DSTU2) {
-            throw new RuntimeException("A DSTU2 fhirServer endpoint or the prefetch resources must be provided in order to evaluate a DSTU2 library");
+            throw new RuntimeException("A DSTU2 fhirServer endpoint or the prefetch model must be provided in order to evaluate a DSTU2 library");
         }
 
         // resolve remote data provider
@@ -72,11 +72,11 @@ public abstract class CdsRequest {
             providers.resolveRemoteDataProvider(fhirServer.toString());
         }
 
-        // resolve context resources library parameter
+        // resolve context model library parameter
         List<Object> contextResources = context.getResources(providers.getVersion());
         providers.resolveContextParameter(applyCql ? applyCqlToResources(contextResources, providers) : contextResources);
 
-        // resolve prefetch urls and resources
+        // resolve prefetch urls and model
         if (prefetchObject == null) {
             prefetch = new Prefetch(null, providers, context.getPatientId());
         }

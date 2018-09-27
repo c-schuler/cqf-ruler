@@ -51,13 +51,13 @@ public class MeasureSubscriptionServlet extends BaseServlet {
     /*
         Chris Schuler's comments:
             I think I understand what the above POST request is trying to accomplish, but I think we can do better.
-            Why are we running the measure again only to get the evaluated resources to update this server? Or
-            is the subscribed-to server updating the resources and this endpoint merely re-runs the measure? If the
+            Why are we running the measure again only to get the evaluated model to update this server? Or
+            is the subscribed-to server updating the model and this endpoint merely re-runs the measure? If the
             former question is true, then I think it is kind of ugly. If the latter, then disregard the rest of this.
             From what I understand from reading this: http://hl7.org/fhir/subscription.html#2.46.6.1, we can
             configure a much cleaner way in the subscription.
 
-            I am suggesting the Subscription resources look something like the following:
+            I am suggesting the Subscription model look something like the following:
                 Subscription
                     status: active
                     criteria: ...
@@ -73,7 +73,7 @@ public class MeasureSubscriptionServlet extends BaseServlet {
             We would need Subscriptions for all the data requirements in the library, which could be automated
             using the $data-requirements operation.
             With this Subscription the subscribed-to server could simply POST that resource (or a Bundle
-            of resources) to this endpoint.
+            of model) to this endpoint.
      */
     /*protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         boolean isJson = true;

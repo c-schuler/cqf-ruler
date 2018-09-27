@@ -22,7 +22,7 @@ class MeasureEvaluationTests {
         this.server.putResource(measureEvalLocation + "hedis-terminology-bundle.json", "");
         this.server.putResource(measureEvalLocation + "hedis-measure-network.json", "");
         this.server.putResource(measureEvalLocation + "hedis-patients.json", "");
-        this.server.putResource(measureEvalLocation + "hedis-resources-bundle.json", "");
+        this.server.putResource(measureEvalLocation + "hedis-model-bundle.json", "");
         this.server.putResource(measureEvalLocation + "hedis-asf-bundle.json", "");
         this.server.putResource(measureEvalLocation + "hedis-bcs-bundle.json", "");
         this.server.putResource(measureEvalLocation + "hedis-ccs-bundle.json", "");

@@ -28,7 +28,7 @@ public class Dstu2ToStu3 {
         }
     }
 
-    // TODO - complete conversion - only interested in the type and entry resources currently
+    // TODO - complete conversion - only interested in the type and entry model currently
     public static Bundle resolveBundle(org.hl7.fhir.instance.model.Bundle bundle) {
         Bundle returnBundle = new Bundle();
         try {

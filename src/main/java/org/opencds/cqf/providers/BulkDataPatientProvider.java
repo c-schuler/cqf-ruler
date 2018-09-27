@@ -104,16 +104,16 @@ public class BulkDataPatientProvider extends JpaResourceProviderDstu3<Patient> {
             @Description(shortDefinition="Search the contents of the resource's narrative using a fulltext search")
             @OptionalParam(name=ca.uhn.fhir.rest.api.Constants.PARAM_TEXT)
                     StringAndListParam theFtText,
-            @Description(shortDefinition="Search for resources which have the given tag")
+            @Description(shortDefinition="Search for model which have the given tag")
             @OptionalParam(name=ca.uhn.fhir.rest.api.Constants.PARAM_TAG)
                     TokenAndListParam theSearchForTag,
-            @Description(shortDefinition="Search for resources which have the given security labels")
+            @Description(shortDefinition="Search for model which have the given security labels")
             @OptionalParam(name=ca.uhn.fhir.rest.api.Constants.PARAM_SECURITY)
                     TokenAndListParam theSearchForSecurity,
-            @Description(shortDefinition="Search for resources which have the given profile")
+            @Description(shortDefinition="Search for model which have the given profile")
             @OptionalParam(name=ca.uhn.fhir.rest.api.Constants.PARAM_PROFILE)
                     UriAndListParam theSearchForProfile,
-            @Description(shortDefinition="Return resources linked to by the given target")
+            @Description(shortDefinition="Return model linked to by the given target")
             @OptionalParam(name="_has")
                     HasAndListParam theHas,
             @Description(shortDefinition="The ID of the resource")
@@ -201,7 +201,7 @@ public class BulkDataPatientProvider extends JpaResourceProviderDstu3<Patient> {
                     Map<String, List<String>> theAdditionalRawParams,
             @IncludeParam(reverse=true)
                     Set<Include> theRevIncludes,
-            @Description(shortDefinition="Only return resources which were last updated as specified by the given range")
+            @Description(shortDefinition="Only return model which were last updated as specified by the given range")
             @OptionalParam(name="_lastUpdated")
                     DateRangeParam theLastUpdated,
             @IncludeParam(allow= {

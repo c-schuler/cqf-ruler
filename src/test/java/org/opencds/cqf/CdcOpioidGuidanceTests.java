@@ -79,7 +79,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationFourTest_LongActingOpioid() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recFourLocation + "patient-example-rec-04-long-acting-opioid.xml", "example-rec-04-long-acting-opioid");
         server.putResource(recFourLocation + "encounter-example-rec-04-long-acting-opioid-context.xml", "example-rec-04-long-acting-opioid-context");
 
@@ -104,7 +104,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationFourTest_LongActingOpioid_NoPrefetch() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recFourLocation + "patient-example-rec-04-long-acting-opioid-no-prefetch.xml", "example-rec-04-long-acting-opioid-no-prefetch");
         server.putResource(recFourLocation + "encounter-example-rec-04-long-acting-opioid-context-no-prefetch.xml", "example-rec-04-long-acting-opioid-context-no-prefetch");
         server.putResource(recFourLocation + "encounter-example-rec-04-long-acting-opioid-no-prefetch.json", "example-rec-04-long-acting-opioid-no-prefetch");
@@ -131,7 +131,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationFourTest_LongActingOpioid_PartialPrefetch() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recFourLocation + "patient-example-rec-04-long-acting-opioid-partial-prefetch.xml", "example-rec-04-long-acting-opioid-partial-prefetch");
         server.putResource(recFourLocation + "encounter-example-rec-04-long-acting-opioid-context-partial-prefetch.xml", "example-rec-04-long-acting-opioid-context-partial-prefetch");
         server.putResource(recFourLocation + "encounter-example-rec-04-long-acting-opioid-partial-prefetch.json", "example-rec-04-long-acting-opioid-partial-prefetch");
@@ -158,7 +158,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationFourTest_NewPatient() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recFourLocation + "patient-example-rec-04-new-patient.xml", "example-rec-04-new-patient");
         server.putResource(recFourLocation + "encounter-example-rec-04-new-patient-context.xml", "example-rec-04-new-patient-context");
 
@@ -173,7 +173,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationFourTest_NotLongActingOpioid() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recFourLocation + "patient-example-rec-04-not-long-acting-opioid.xml", "example-rec-04-not-long-acting-opioid");
         server.putResource(recFourLocation + "encounter-example-rec-04-not-long-acting-opioid-context.xml", "example-rec-04-not-long-acting-opioid-context");
 
@@ -188,7 +188,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationFourTest_OpioidWithAbusePotential() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recFourLocation + "patient-example-rec-04-opioid-with-abuse-potential.xml", "example-rec-04-opioid-with-abuse-potential");
         server.putResource(recFourLocation + "encounter-example-rec-04-opioid-with-abuse-potential-context.xml", "example-rec-04-opioid-with-abuse-potential-context");
 
@@ -203,7 +203,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationFiveTest_MMEGreaterThanFifty() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recFiveLocation + "patient-example-rec-05-mme-greater-than-fifty.xml", "example-rec-05-mme-greater-than-fifty");
         server.putResource(recFiveLocation + "encounter-example-rec-05-mme-greater-than-fifty-context.xml", "example-rec-05-mme-greater-than-fifty-context");
 
@@ -234,7 +234,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationFiveTest_MMELessThanFifty() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recFiveLocation + "patient-example-rec-05-mme-less-than-fifty.xml", "example-rec-05-mme-less-than-fifty");
         server.putResource(recFiveLocation + "encounter-example-rec-05-mme-less-than-fifty-context.xml", "example-rec-05-mme-less-than-fifty-context");
 
@@ -249,7 +249,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationSevenTest_EndOfLifeExclusion() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recSevenLocation + "patient-example-rec-07-end-of-life-exclusion.xml", "example-rec-07-end-of-life-exclusion");
         server.putResource(recSevenLocation + "encounter-example-rec-07-end-of-life-exclusion-context.xml", "example-rec-07-end-of-life-exclusion-context");
 
@@ -264,7 +264,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationSevenTest_RiskAssessment() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recSevenLocation + "patient-example-rec-07-risk-assessment.xml", "example-rec-07-risk-assessment");
         server.putResource(recSevenLocation + "encounter-example-rec-07-risk-assessment-context.xml", "example-rec-07-risk-assessment-context");
 
@@ -279,7 +279,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationSevenTest_SevenOfPastTenDays() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recSevenLocation + "patient-example-rec-07-seven-of-past-ten-days.xml", "example-rec-07-seven-of-past-ten-days");
         server.putResource(recSevenLocation + "encounter-example-rec-07-seven-of-past-ten-days-context.xml", "example-rec-07-seven-of-past-ten-days-context");
 
@@ -333,7 +333,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationSevenTest_SixOfPastTenDays() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recSevenLocation + "patient-example-rec-07-six-of-past-ten-days.xml", "example-rec-07-six-of-past-ten-days");
         server.putResource(recSevenLocation + "encounter-example-rec-07-six-of-past-ten-days-context.xml", "example-rec-07-six-of-past-ten-days-context");
 
@@ -348,7 +348,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationSevenTest_SixtyThreeOfPastNinetyDays() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recSevenLocation + "patient-example-rec-07-sixtythree-of-past-ninety-days.xml", "example-rec-07-sixtythree-of-past-ninety-days");
         server.putResource(recSevenLocation + "encounter-example-rec-07-sixtythree-of-past-ninety-days-context.xml", "example-rec-07-sixtythree-of-past-ninety-days-context");
 
@@ -402,7 +402,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationSevenTest_SixtyTwoOfPastNinetyDays() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recSevenLocation + "patient-example-rec-07-sixtytwo-of-past-ninety-days.xml", "example-rec-07-sixtytwo-of-past-ninety-days");
         server.putResource(recSevenLocation + "encounter-example-rec-07-sixtytwo-of-past-ninety-days-context.xml", "example-rec-07-sixtytwo-of-past-ninety-days-context");
 
@@ -417,7 +417,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationEightTest_MMEGreaterThanFifty() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recEightLocation + "patient-example-rec-08-mme-greater-than-fifty.xml", "example-rec-08-mme-greater-than-fifty");
         server.putResource(recEightLocation + "encounter-example-rec-08-mme-greater-than-fifty-context.xml", "example-rec-08-mme-greater-than-fifty-context");
 
@@ -448,7 +448,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationEightTest_MMELessThanFifty() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recEightLocation + "patient-example-rec-08-mme-less-than-fifty.xml", "example-rec-08-mme-less-than-fifty");
         server.putResource(recEightLocation + "encounter-example-rec-08-mme-less-than-fifty-context.xml", "example-rec-08-mme-less-than-fifty-context");
 
@@ -463,7 +463,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationEightTest_OnBenzodiazepine() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recEightLocation + "patient-example-rec-08-on-benzodiazepine.xml", "example-rec-08-on-benzodiazepine");
         server.putResource(recEightLocation + "encounter-example-rec-08-on-benzodiazepine-context.xml", "example-rec-08-on-benzodiazepine-context");
 
@@ -494,7 +494,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationEightTest_OnNaloxone() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recEightLocation + "patient-example-rec-08-on-naloxone.xml", "example-rec-08-on-naloxone");
         server.putResource(recEightLocation + "encounter-example-rec-08-on-naloxone-context.xml", "example-rec-08-on-naloxone-context");
 
@@ -509,7 +509,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationEightTest_HistoryOfSubstanceAbuse() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recEightLocation + "patient-example-rec-08-substance-abuse.xml", "example-rec-08-substance-abuse");
         server.putResource(recEightLocation + "encounter-example-rec-08-substance-abuse-context.xml", "example-rec-08-substance-abuse-context");
 
@@ -540,7 +540,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationTenTest_EndOfLifeExclusion() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recTenLocation + "patient-example-rec-10-end-of-life-med-exclusion.xml", "example-rec-10-end-of-life-med-exclusion");
         server.putResource(recTenLocation + "encounter-example-rec-10-end-of-life-med-exclusion-context.xml", "example-rec-10-end-of-life-med-exclusion-context");
 
@@ -555,7 +555,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationTenTest_IllicitDrugs() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recTenLocation + "patient-example-rec-10-illicit-drugs.xml", "example-rec-10-illicit-drugs");
         server.putResource(recTenLocation + "encounter-example-rec-10-illicit-drugs-context.xml", "example-rec-10-illicit-drugs-context");
 
@@ -580,7 +580,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationTenTest_MissingPrescribedOpioids() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recTenLocation + "patient-example-rec-10-missing-prescribed-opioids.xml", "example-rec-10-missing-prescribed-opioids");
         server.putResource(recTenLocation + "encounter-example-rec-10-missing-prescribed-opioids-context.xml", "example-rec-10-missing-prescribed-opioids-context");
 
@@ -605,7 +605,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationTenTest_NoScreenings() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recTenLocation + "patient-example-rec-10-no-screenings.xml", "example-rec-10-no-screenings");
         server.putResource(recTenLocation + "encounter-example-rec-10-no-screenings-context.xml", "example-rec-10-no-screenings-context");
 
@@ -630,7 +630,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationTenTest_NotMissingPrescribedOpioids() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recTenLocation + "patient-example-rec-10-not-missing-prescribed-opioids.xml", "example-rec-10-not-missing-prescribed-opioids");
         server.putResource(recTenLocation + "encounter-example-rec-10-not-missing-prescribed-opioids-context.xml", "example-rec-10-not-missing-prescribed-opioids-context");
 
@@ -645,7 +645,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationTenTest_UnprescribedOpioidsAndMissingPrescribedOpioids() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recTenLocation + "patient-example-rec-10-unprescribed-opioids.xml", "example-rec-10-unprescribed-opioids");
         server.putResource(recTenLocation + "encounter-example-rec-10-unprescribed-opioids-context.xml", "example-rec-10-unprescribed-opioids-context");
 
@@ -679,7 +679,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationElevenTest_BenzoTriggerWithOpioid() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recElevenLocation + "patient-example-rec-11-benzo-trigger-with-opioid.xml", "example-rec-11-benzo-trigger-with-opioid");
         server.putResource(recElevenLocation + "encounter-example-rec-11-benzo-trigger-with-opioid-context.xml", "example-rec-11-benzo-trigger-with-opioid-context");
 
@@ -704,7 +704,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationElevenTest_BenzoTriggerWithoutOpioid() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recElevenLocation + "patient-example-rec-11-benzo-trigger-without-opioid.xml", "example-rec-11-benzo-trigger-without-opioid");
         server.putResource(recElevenLocation + "encounter-example-rec-11-benzo-trigger-without-opioid-context.xml", "example-rec-11-benzo-trigger-without-opioid-context");
 
@@ -719,7 +719,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationElevenTest_OpioidTriggerWithBenzo() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recElevenLocation + "patient-example-rec-11-opioid-trigger-with-benzo.xml", "example-rec-11-opioid-trigger-with-benzo");
         server.putResource(recElevenLocation + "encounter-example-rec-11-opioid-trigger-with-benzo-context.xml", "example-rec-11-opioid-trigger-with-benzo-context");
 
@@ -744,7 +744,7 @@ class CdcOpioidGuidanceTests {
 
     void CdcOpioidGuidanceRecommendationElevenTest_OpioidTriggerWithoutBenzo() throws IOException {
 
-        // load necessary resources and artifacts
+        // load necessary model and artifacts
         server.putResource(recElevenLocation + "patient-example-rec-11-opioid-trigger-without-benzo.xml", "example-rec-11-opioid-trigger-without-benzo");
         server.putResource(recElevenLocation + "encounter-example-rec-11-opioid-trigger-without-benzo-context.xml", "example-rec-11-opioid-trigger-without-benzo-context");
 

@@ -1,6 +1,5 @@
 package org.opencds.cqf.providers;
 
-import ca.uhn.fhir.context.FhirVersionEnum;
 import ca.uhn.fhir.jpa.dao.SearchParameterMap;
 import ca.uhn.fhir.jpa.rp.dstu3.LibraryResourceProvider;
 import ca.uhn.fhir.jpa.rp.dstu3.MeasureResourceProvider;
@@ -8,7 +7,6 @@ import ca.uhn.fhir.rest.annotation.*;
 import ca.uhn.fhir.rest.api.server.RequestDetails;
 import ca.uhn.fhir.rest.param.*;
 import ca.uhn.fhir.rest.server.exceptions.InternalErrorException;
-import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.cqframework.cql.cql2elm.LibraryManager;
@@ -19,7 +17,6 @@ import org.cqframework.cql.elm.execution.VersionedIdentifier;
 import org.hl7.fhir.dstu3.model.*;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.instance.model.api.IAnyResource;
-import org.hl7.fhir.instance.model.api.IBase;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.opencds.cqf.config.STU3LibraryLoader;
@@ -371,7 +368,7 @@ public class FHIRMeasureResourceProvider extends MeasureResourceProvider {
 //            RequestDetails details,
 //            @IdParam IdType theId,
 //            @OperationParam(name="measure-report", min = 1, max = 1, type = MeasureReport.class) MeasureReport report,
-//            @OperationParam(name="resource", type = Bundle.class) Bundle resources)
+//            @OperationParam(name="resource", type = Bundle.class) Bundle model)
 //    {
 //        Measure measure = this.getDao().read(new IdType(theId.getIdPart()));
 //
@@ -384,7 +381,7 @@ public class FHIRMeasureResourceProvider extends MeasureResourceProvider {
 //
 //        try {
 //            provider.setEndpoint(details.getFhirServerBase());
-//            return provider.getFhirClient().transaction().withBundle(createTransactionBundle(report, resources)).execute();
+//            return provider.getFhirClient().transaction().withBundle(createTransactionBundle(report, model)).execute();
 //        } catch (Exception e) {
 //            return new OperationOutcome().addIssue(
 //                    new OperationOutcome.OperationOutcomeIssueComponent()

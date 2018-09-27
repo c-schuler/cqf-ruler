@@ -29,7 +29,7 @@ public class XlsxToValueSet {
 
     private static int urlCol = 1;
 
-    private static String outDir = "src/main/resources/valuesets/";
+    private static String outDir = "src/main/model/valuesets/";
 
     private static final String validFlags = "-b (line to start conversion)\n-o (oid column index)\n-s (code system column index)\n-v (version column index)\n-c (code column index)\n-d (display column index)\n-u (url column index) only used for CodeSystem conversion";
 

@@ -8,7 +8,7 @@ import org.hl7.fhir.dstu3.model.Resource;
  * Created by Bryn on 5/7/2016.
  */
 public class FhirMeasureBundler {
-    // Adds the resources returned from the given expressions to a bundle
+    // Adds the model returned from the given expressions to a bundle
     public Bundle bundle(Context context, String... expressionNames) {
         Bundle bundle = new Bundle();
         bundle.setType(Bundle.BundleType.COLLECTION);
