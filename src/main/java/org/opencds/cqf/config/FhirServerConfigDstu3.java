@@ -48,17 +48,17 @@ public class FhirServerConfigDstu3 extends BaseJavaConfigDstu3 {
         return retVal;
     }
 
-    // H2 Config
-    @Bean(name = "myPersistenceDataSourceDstu3", destroyMethod = "close")
-    public DataSource dataSource() {
-        Path path = Paths.get("target/stu3").toAbsolutePath();
-        BasicDataSource retVal = new BasicDataSource();
-        retVal.setDriver(new org.h2.Driver());
-        retVal.setUrl("jdbc:h2:file:" + path.toString() + ";create=true;MV_STORE=FALSE;MVCC=FALSE");
-        retVal.setUsername("");
-        retVal.setPassword("");
-        return retVal;
-    }
+//    // H2 Config
+//    @Bean(name = "myPersistenceDataSourceDstu3", destroyMethod = "close")
+//    public DataSource dataSource() {
+//        Path path = Paths.get("target/stu3").toAbsolutePath();
+//        BasicDataSource retVal = new BasicDataSource();
+//        retVal.setDriver(new org.h2.Driver());
+//        retVal.setUrl("jdbc:h2:file:" + path.toString() + ";LOCK_TIMEOUT=10000;create=true;MV_STORE=FALSE;MVCC=true");
+//        retVal.setUsername("");
+//        retVal.setPassword("");
+//        return retVal;
+//    }
 
     @Override
     @Bean(autowire = Autowire.BY_TYPE)
@@ -80,25 +80,25 @@ public class FhirServerConfigDstu3 extends BaseJavaConfigDstu3 {
         return retVal;
     }
 
-    // H2 config
-    private Properties jpaProperties() {
-        Properties extraProperties = new Properties();
-        extraProperties.put("hibernate.dialect", org.hibernate.dialect.H2Dialect.class.getName());
-        extraProperties.put("hibernate.format_sql", "true");
-        extraProperties.put("hibernate.show_sql", "false");
-        extraProperties.put("hibernate.hbm2ddl.auto", "update");
-        extraProperties.put("hibernate.jdbc.batch_size", "20");
-        extraProperties.put("hibernate.cache.use_query_cache", "false");
-        extraProperties.put("hibernate.cache.use_second_level_cache", "false");
-        extraProperties.put("hibernate.cache.use_structured_entries", "false");
-        extraProperties.put("hibernate.cache.use_minimal_puts", "false");
-        extraProperties.put("hibernate.search.model_mapping", LuceneSearchMappingFactory.class.getName());
-        extraProperties.put("hibernate.search.default.directory_provider", "filesystem");
-        extraProperties.put("hibernate.search.default.indexBase", "target/lucenefiles_stu3");
-        extraProperties.put("hibernate.search.lucene_version", "LUCENE_CURRENT");
-//		extraProperties.put("hibernate.search.default.worker.execution", "async");
-        return extraProperties;
-    }
+//    // H2 config
+//    private Properties jpaProperties() {
+//        Properties extraProperties = new Properties();
+//        extraProperties.put("hibernate.dialect", org.hibernate.dialect.H2Dialect.class.getName());
+//        extraProperties.put("hibernate.format_sql", "true");
+//        extraProperties.put("hibernate.show_sql", "false");
+//        extraProperties.put("hibernate.hbm2ddl.auto", "update");
+//        extraProperties.put("hibernate.jdbc.batch_size", "20");
+//        extraProperties.put("hibernate.cache.use_query_cache", "false");
+//        extraProperties.put("hibernate.cache.use_second_level_cache", "false");
+//        extraProperties.put("hibernate.cache.use_structured_entries", "false");
+//        extraProperties.put("hibernate.cache.use_minimal_puts", "false");
+//        extraProperties.put("hibernate.search.model_mapping", LuceneSearchMappingFactory.class.getName());
+//        extraProperties.put("hibernate.search.default.directory_provider", "filesystem");
+//        extraProperties.put("hibernate.search.default.indexBase", "target/lucenefiles_stu3");
+//        extraProperties.put("hibernate.search.lucene_version", "LUCENE_CURRENT");
+////		extraProperties.put("hibernate.search.default.worker.execution", "async");
+//        return extraProperties;
+//    }
 
     @Bean
     @Lazy
@@ -162,24 +162,24 @@ public class FhirServerConfigDstu3 extends BaseJavaConfigDstu3 {
 //    }
 
 //    Derby config
-//    private Properties jpaProperties() {
-//        Properties extraProperties = new Properties();
-//        extraProperties.put("hibernate.dialect", org.hibernate.dialect.DerbyTenSevenDialect.class.getName());
-//        extraProperties.put("hibernate.format_sql", "true");
-//        extraProperties.put("hibernate.show_sql", "false");
-//        extraProperties.put("hibernate.hbm2ddl.auto", "update");
-//        extraProperties.put("hibernate.jdbc.batch_size", "20");
-//        extraProperties.put("hibernate.cache.use_query_cache", "false");
-//        extraProperties.put("hibernate.cache.use_second_level_cache", "false");
-//        extraProperties.put("hibernate.cache.use_structured_entries", "false");
-//        extraProperties.put("hibernate.cache.use_minimal_puts", "false");
-//        extraProperties.put("hibernate.search.model_mapping", LuceneSearchMappingFactory.class.getName());
-//        extraProperties.put("hibernate.search.default.directory_provider", "filesystem");
-//        extraProperties.put("hibernate.search.default.indexBase", "target/lucenefiles");
-//        extraProperties.put("hibernate.search.lucene_version", "LUCENE_CURRENT");
-////		extraProperties.put("hibernate.search.default.worker.execution", "async");
-//        return extraProperties;
-//    }
+    private Properties jpaProperties() {
+        Properties extraProperties = new Properties();
+        extraProperties.put("hibernate.dialect", org.hibernate.dialect.DerbyTenSevenDialect.class.getName());
+        extraProperties.put("hibernate.format_sql", "true");
+        extraProperties.put("hibernate.show_sql", "false");
+        extraProperties.put("hibernate.hbm2ddl.auto", "update");
+        extraProperties.put("hibernate.jdbc.batch_size", "20");
+        extraProperties.put("hibernate.cache.use_query_cache", "false");
+        extraProperties.put("hibernate.cache.use_second_level_cache", "false");
+        extraProperties.put("hibernate.cache.use_structured_entries", "false");
+        extraProperties.put("hibernate.cache.use_minimal_puts", "false");
+        extraProperties.put("hibernate.search.model_mapping", LuceneSearchMappingFactory.class.getName());
+        extraProperties.put("hibernate.search.default.directory_provider", "filesystem");
+        extraProperties.put("hibernate.search.default.indexBase", "target/lucenefiles");
+        extraProperties.put("hibernate.search.lucene_version", "LUCENE_CURRENT");
+//		extraProperties.put("hibernate.search.default.worker.execution", "async");
+        return extraProperties;
+    }
 
 //    PostgreSQL config
 //    @Bean(destroyMethod = "close")
@@ -193,13 +193,13 @@ public class FhirServerConfigDstu3 extends BaseJavaConfigDstu3 {
 //    }
 
 //    Derby config
-//    @Bean(destroyMethod = "close")
-//    public DataSource dataSource() {
-//        BasicDataSource retVal = new BasicDataSource();
-//        retVal.setDriver(new org.apache.derby.jdbc.EmbeddedDriver());
-//        retVal.setUrl("jdbc:derby:directory:target/jpaserver_derby_files;create=true");
-//        retVal.setUsername("");
-//        retVal.setPassword("");
-//        return retVal;
-//    }
+    @Bean(destroyMethod = "close")
+    public DataSource dataSource() {
+        BasicDataSource retVal = new BasicDataSource();
+        retVal.setDriver(new org.apache.derby.jdbc.EmbeddedDriver());
+        retVal.setUrl("jdbc:derby:directory:target/jpaserver_derby_files;create=true");
+        retVal.setUsername("");
+        retVal.setPassword("");
+        return retVal;
+    }
 }

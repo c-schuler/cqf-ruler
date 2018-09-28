@@ -11,7 +11,7 @@
 
         <spring_version>5.0.3.RELEASE</spring_version>
         <jetty_version>9.4.8.v20171121</jetty_version>
-        <hapi_version>3.5.0-SNAPSHOT</hapi_version>
+        <hapi_version>3.5.0</hapi_version>
         <cql_engine_version>1.2.51-SNAPSHOT</cql_engine_version>
 
         <!-- Exec plugin properties (used when starting server) -->
@@ -377,7 +377,7 @@
                     <systemProperties>
                         <systemProperty>
                             <name>org.eclipse.jetty.server.Request.maxFormContentSize</name>
-                            <value>-1</value>
+                            <value>99900000</value>
                         </systemProperty>
                         <systemProperty>
                             <key>fhir.baseurl.r4</key>

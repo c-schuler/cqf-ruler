@@ -525,7 +525,7 @@ public class SearchCoordinatorSvcImpl implements ISearchCoordinatorSvc {
                     }
                 });
 
-                ourLog.info("Completed search for {} model in {}ms", mySyncedPids.size(), sw.getMillis());
+                ourLog.info("Completed search for {} resources in {}ms", mySyncedPids.size(), sw.getMillis());
 
             } catch (Throwable t) {
 

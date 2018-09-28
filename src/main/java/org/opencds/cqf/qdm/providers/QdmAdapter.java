@@ -167,9 +167,7 @@ public class QdmAdapter {
     }
 
     public static boolean isPeriodNull(Period period) {
-        if (period == null) return true;
-        if (!period.hasStart() && !period.hasEnd()) return true;
-        return false;
+        return period == null || !period.hasStart() && !period.hasEnd();
     }
 
     public EncounterPerformed createEncounterPerformed(Object fhirResource, boolean isPositive) {
