@@ -13,6 +13,7 @@ import ca.uhn.fhir.jpa.term.IHapiTerminologySvcDstu3;
 import ca.uhn.fhir.rest.api.EncodingEnum;
 import ca.uhn.fhir.rest.server.IResourceProvider;
 import ca.uhn.fhir.rest.server.RestfulServer;
+import ca.uhn.fhir.rest.server.interceptor.CorsInterceptor;
 import ca.uhn.fhir.rest.server.interceptor.IServerInterceptor;
 import ca.uhn.fhir.rest.server.interceptor.LoggingInterceptor;
 import org.hl7.fhir.dstu3.model.Bundle;
@@ -20,10 +21,13 @@ import org.hl7.fhir.dstu3.model.Meta;
 import org.opencds.cqf.cql.terminology.TerminologyProvider;
 import org.opencds.cqf.interceptors.TransactionInterceptor;
 import org.opencds.cqf.providers.*;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.cors.CorsConfiguration;
 
 import javax.servlet.ServletException;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -101,6 +105,23 @@ public class BaseServlet extends RestfulServer {
 
         // TODO - will need this for Measure/$submit-data operation
 //        FhirSystemDaoDstu3 systemDaoDstu3 = myAppCtx.getBean("mySystemDaoDstu3", FhirSystemDaoDstu3.class);
+
+        CorsConfiguration config = new CorsConfiguration();
+        config.addAllowedHeader("x-fhir-starter");
+        config.addAllowedHeader("Origin");
+        config.addAllowedHeader("Accept");
+        config.addAllowedHeader("X-Requested-With");
+        config.addAllowedHeader("Content-Type");
+
+        config.addAllowedOrigin("*");
+
+        config.addExposedHeader("Location");
+        config.addExposedHeader("Content-Location");
+        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
+
+        // Create the interceptor and register it
+        CorsInterceptor interceptor = new CorsInterceptor(config);
+        registerInterceptor(interceptor);
     }
 
     private void resolveResourceProviders(JpaDataProvider provider) throws ServletException {
