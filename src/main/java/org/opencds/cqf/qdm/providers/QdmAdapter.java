@@ -106,6 +106,7 @@ public class QdmAdapter {
                         return "class";
                 }
             }
+            case "PatientCharacteristicSex": return "gender";
         }
 
         return qdmPath;

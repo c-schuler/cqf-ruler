@@ -26,6 +26,7 @@ import org.opencds.cqf.cql.runtime.Interval;
 import org.opencds.cqf.cql.terminology.fhir.FhirTerminologyProvider;
 import org.opencds.cqf.evaluation.MeasureEvaluation;
 import org.opencds.cqf.helpers.DateHelper;
+import org.opencds.cqf.qdm.providers.QdmDataProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -70,6 +71,40 @@ public class FHIRMeasureResourceProvider extends MeasureResourceProvider {
     {
         Pair<Measure, Context> measureSetup = setup(measureRef == null ? "" : measureRef, theId, periodStart, periodEnd, source, user, pass);
         measureSetup.getRight().registerDataProvider("http://hl7.org/fhir", provider);
+
+
+        // resolve report type
+        MeasureEvaluation evaluator = new MeasureEvaluation(provider, measurementPeriod);
+        if (reportType != null) {
+            switch (reportType) {
+                case "patient": return evaluator.evaluatePatientMeasure(measureSetup.getLeft(), measureSetup.getRight(), patientRef);
+                case "patient-list": return  evaluator.evaluatePatientListMeasure(measureSetup.getLeft(), measureSetup.getRight(), practitionerRef);
+                case "population": return evaluator.evaluatePopulationMeasure(measureSetup.getLeft(), measureSetup.getRight());
+                default: throw new IllegalArgumentException("Invalid report type: " + reportType);
+            }
+        }
+
+        // default report type is patient
+        return evaluator.evaluatePatientMeasure(measureSetup.getLeft(), measureSetup.getRight(), patientRef);
+    }
+
+    @Operation(name = "$evaluate-qdm-measure", idempotent = true)
+    public MeasureReport evaluateQDMMeasure(
+            @IdParam IdType theId,
+            @RequiredParam(name="periodStart") String periodStart,
+            @RequiredParam(name="periodEnd") String periodEnd,
+            @OptionalParam(name="measure") String measureRef,
+            @OptionalParam(name="reportType") String reportType,
+            @OptionalParam(name="patient") String patientRef,
+            @OptionalParam(name="practitioner") String practitionerRef,
+            @OptionalParam(name="lastReceivedOn") String lastReceivedOn,
+            @OptionalParam(name="source") String source,
+            @OptionalParam(name="user") String user,
+            @OptionalParam(name="pass") String pass) throws InternalErrorException, FHIRException
+    {
+        Pair<Measure, Context> measureSetup = setup(measureRef == null ? "" : measureRef, theId, periodStart, periodEnd, source, user, pass);
+        measureSetup.getRight().registerDataProvider("urn:healthit-gov:qdm:v5_3", new QdmDataProvider(provider.getCollectionProviders()));
+        measureSetup.getRight().registerDataProvider("org.hl7.fhir.dstu3.model", provider);
 
 
         // resolve report type
