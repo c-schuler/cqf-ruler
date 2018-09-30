@@ -1,7 +1,6 @@
 package org.opencds.cqf.config;
 
 import ca.uhn.fhir.jpa.rp.dstu3.LibraryResourceProvider;
-import org.cqframework.cql.cql2elm.CqlTranslator;
 import org.cqframework.cql.cql2elm.CqlTranslatorException;
 import org.cqframework.cql.cql2elm.LibraryManager;
 import org.cqframework.cql.cql2elm.ModelManager;
@@ -12,7 +11,6 @@ import org.opencds.cqf.cql.execution.LibraryLoader;
 
 import javax.xml.bind.JAXBException;
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -61,6 +59,7 @@ public class STU3LibraryLoader implements LibraryLoader {
             libraries.put(libraryIdentifier.getId(), library);
         }
 
+        // TODO - need to check if library has been updated
         return library;
     }
 
