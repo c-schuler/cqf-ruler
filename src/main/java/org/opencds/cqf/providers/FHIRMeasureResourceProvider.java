@@ -102,9 +102,11 @@ public class FHIRMeasureResourceProvider extends MeasureResourceProvider {
             @OptionalParam(name="user") String user,
             @OptionalParam(name="pass") String pass) throws InternalErrorException, FHIRException
     {
+        QdmDataProvider dataProvider = new QdmDataProvider(provider.getCollectionProviders());
+        dataProvider.setEndpoint("http://localhost:8080/cqf-ruler/baseDstu3");
         Pair<Measure, Context> measureSetup = setup(measureRef == null ? "" : measureRef, theId, periodStart, periodEnd, source, user, pass);
-        measureSetup.getRight().registerDataProvider("urn:healthit-gov:qdm:v5_3", new QdmDataProvider(provider.getCollectionProviders()));
-        measureSetup.getRight().registerDataProvider("org.hl7.fhir.dstu3.model", provider);
+        measureSetup.getRight().registerDataProvider("urn:healthit-gov:qdm:v5_3", dataProvider);
+        measureSetup.getRight().registerDataProvider("org.hl7.fhir.dstu3.model", dataProvider);
 
 
         // resolve report type

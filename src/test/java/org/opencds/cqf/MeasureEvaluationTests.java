@@ -4,6 +4,7 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.model.primitive.IdDt;
 import org.hl7.fhir.dstu3.model.*;
 import org.junit.Assert;
+import org.opencds.cqf.qdm.providers.QdmDataProvider;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -28,6 +29,14 @@ class MeasureEvaluationTests {
         this.server.putResource(measureEvalLocation + "hedis-ccs-bundle.json", "");
         this.server.putResource(measureEvalLocation + "hedis-col-bundle.json", "");
         this.server.putResource(measureEvalLocation + "hedis-dms-bundle.json", "");
+
+        // cms measures
+        this.server.putResource(measureEvalLocation + "cmsCommon-terminology.json", "");
+        this.server.putResource(measureEvalLocation + "cms125-terminology.json", "");
+        this.server.putResource(measureEvalLocation + "cmsCommon-FHIR-bundle.json", "");
+        this.server.putResource(measureEvalLocation + "cms125-FHIR-bundle.json", "");
+        this.server.putResource(measureEvalLocation + "cmsCommon-QDM-bundle.json", "");
+        this.server.putResource(measureEvalLocation + "cms125-QDM-bundle.json", "");
     }
 
     void patientMeasureASF_IIP_AllNumerator_AllDenominator_True() {
@@ -165,7 +174,7 @@ class MeasureEvaluationTests {
         }
     }
 
-    private void validatePopulationMeasure(String startPeriod, String endPeriod, String measureId)
+    private void validatePopulationMeasure(String startPeriod, String endPeriod, String measureId, String operation)
     {
         Parameters inParams = new Parameters();
         inParams.addParameter().setName("reportType").setValue(new StringType("population"));
@@ -175,7 +184,7 @@ class MeasureEvaluationTests {
         Parameters outParams = server.ourClient
                 .operation()
                 .onInstance(new IdDt("Measure", measureId))
-                .named("$evaluate-measure")
+                .named(operation)
                 .withParameters(inParams)
                 .useHttpGet()
                 .execute();
@@ -210,15 +219,15 @@ class MeasureEvaluationTests {
     }
 
     void populationMeasureBCS() {
-        validatePopulationMeasure("1997-01-01", "1997-12-31", "measure-bcs");
+        validatePopulationMeasure("1997-01-01", "1997-12-31", "measure-bcs", "$evaluate-measure");
     }
 
     void populationMeasureCCS() {
-        validatePopulationMeasure("2017-01-01", "2017-12-31", "measure-ccs");
+        validatePopulationMeasure("2017-01-01", "2017-12-31", "measure-ccs", "$evaluate-measure");
     }
 
     void populationMeasureCOL() {
-        validatePopulationMeasure("1997-01-01", "1997-12-31", "measure-col");
+        validatePopulationMeasure("1997-01-01", "1997-12-31", "measure-col", "$evaluate-measure");
     }
 
     void bundleSourceDataMeasure_COL() {
@@ -319,5 +328,14 @@ class MeasureEvaluationTests {
         Bundle transactionResponse = (Bundle) component.getResource();
 
         Assert.assertTrue(transactionResponse.hasType() && transactionResponse.getType() == Bundle.BundleType.TRANSACTIONRESPONSE);
+    }
+
+    void populationMeasureCMS125_FHIR() {
+        validatePopulationMeasure("2016-01-01", "2016-12-31", "measure-cms125-FHIR", "$evaluate-measure");
+    }
+
+    void populationMeasureCMS125_QDM() {
+        server.ourClient = new QdmDataProvider(server.dataProvider.getCollectionProviders()).setEndpoint("http://localhost:8080/cqf-ruler/baseDstu3").getFhirClient();
+        validatePopulationMeasure("2016-01-01", "2016-12-31", "measure-cms125-QDM", "$evaluate-qdm-measure");
     }
 }

@@ -2,19 +2,19 @@ package org.opencds.cqf.qdm.model;
 
 import ca.uhn.fhir.model.api.annotation.Child;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
+import org.hl7.fhir.dstu3.model.Period;
 import org.hl7.fhir.dstu3.model.ResourceType;
-import org.opencds.cqf.cql.runtime.Interval;
 
 
 @ResourceDef(name="PatientCharacteristicPayer", profile="TODO")
 public class PatientCharacteristicPayer extends QdmBaseType {
 
     @Child(name="relevantPeriod", order=0)
-    private Interval relevantPeriod;
-    public Interval getRelevantPeriod() {
+    private Period relevantPeriod;
+    public Period getRelevantPeriod() {
         return relevantPeriod;
     }
-    public PatientCharacteristicPayer setRelevantPeriod(Interval relevantPeriod) {
+    public PatientCharacteristicPayer setRelevantPeriod(Period relevantPeriod) {
         this.relevantPeriod = relevantPeriod;
         return this;
     }	

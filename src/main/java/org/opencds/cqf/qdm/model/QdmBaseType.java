@@ -1,5 +1,6 @@
 package org.opencds.cqf.qdm.model;
 
+import ca.uhn.fhir.model.api.annotation.Child;
 import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.DomainResource;
 import org.hl7.fhir.dstu3.model.ResourceType;
@@ -8,6 +9,7 @@ import org.opencds.cqf.qdm.providers.QdmAdapter;
 
 public abstract class QdmBaseType extends DomainResource {
 
+    @Child(name="theId", order=0)
     private Id id;
     public Id getTheId() {
         return id;
@@ -17,6 +19,7 @@ public abstract class QdmBaseType extends DomainResource {
         return this;
     }
 
+    @Child(name="code", order=1)
     private Coding code;
     public Code getCode() {
         return QdmAdapter.createCode(code);
@@ -26,6 +29,7 @@ public abstract class QdmBaseType extends DomainResource {
         return this;
     }
 
+    @Child(name="patientId", order=2)
     private Id patientId;
     public Id getPatientId() {
         return patientId;
@@ -35,6 +39,7 @@ public abstract class QdmBaseType extends DomainResource {
         return this;
     }
 
+    @Child(name="reporter", order=3)
     private Id reporter;
     public Id getReporter() {
         return reporter;
@@ -44,6 +49,7 @@ public abstract class QdmBaseType extends DomainResource {
         return this;
     }
 
+    @Child(name="recorder", order=4)
     private Id recorder;
     public Id getRecorder() {
         return recorder;

@@ -1,0 +1,991 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "2.16.840.1.113883.3.464.1003.108.12.1020",
+        "title": "Colonoscopy",
+        "status": "active",
+        "publisher": "National Committee for Quality Assurance",
+        "compose": {
+          "include": [
+            {
+              "system": "http://snomed.info/sct",
+              "version": "2018-09",
+              "concept": [
+                {
+                  "code": "12350003",
+                  "display": "Colonoscopy with rigid sigmoidoscope through colotomy (procedure)"
+                },
+                {
+                  "code": "174158000",
+                  "display": "Open colonoscopy (procedure)"
+                },
+                {
+                  "code": "235150006",
+                  "display": "Total colonoscopy (procedure)"
+                },
+                {
+                  "code": "235151005",
+                  "display": "Limited colonoscopy (procedure)"
+                },
+                {
+                  "code": "25732003",
+                  "display": "Fiberoptic colonoscopy with biopsy (procedure)"
+                },
+                {
+                  "code": "310634005",
+                  "display": "Check colonoscopy (procedure)"
+                },
+                {
+                  "code": "34264006",
+                  "display": "Intraoperative colonoscopy (procedure)"
+                },
+                {
+                  "code": "367535003",
+                  "display": "Fiberoptic colonoscopy (procedure)"
+                },
+                {
+                  "code": "425672002",
+                  "display": "Diagnostic endoscopic examination of ileoanal pouch and biopsy of ileoanal pouch using colonoscope (procedure)"
+                },
+                {
+                  "code": "425937002",
+                  "display": "Diagnostic endoscopic examination of enteric pouch using colonoscope (procedure)"
+                },
+                {
+                  "code": "427459009",
+                  "display": "Diagnostic endoscopic examination of colonic pouch and biopsy of colonic pouch using colonoscope (procedure)"
+                },
+                {
+                  "code": "443998000",
+                  "display": "Colonoscopy through colostomy with endoscopic biopsy of colon (procedure)"
+                },
+                {
+                  "code": "444783004",
+                  "display": "Screening colonoscopy (procedure)"
+                },
+                {
+                  "code": "446521004",
+                  "display": "Colonoscopy and excision of mucosa of colon (procedure)"
+                },
+                {
+                  "code": "446745002",
+                  "display": "Colonoscopy and biopsy of colon (procedure)"
+                },
+                {
+                  "code": "447021001",
+                  "display": "Colonoscopy and tattooing (procedure)"
+                },
+                {
+                  "code": "709421007",
+                  "display": "Colonoscopy and dilatation of stricture of colon (procedure)"
+                },
+                {
+                  "code": "710293001",
+                  "display": "Colonoscopy using fluoroscopic guidance (procedure)"
+                },
+                {
+                  "code": "711307001",
+                  "display": "Colonoscopy using X-ray guidance (procedure)"
+                },
+                {
+                  "code": "713154003",
+                  "display": "Endoscopic submucosal dissection of rectum using colonoscope (procedure)"
+                },
+                {
+                  "code": "73761001",
+                  "display": "Colonoscopy (procedure)"
+                },
+                {
+                  "code": "8180007",
+                  "display": "Fiberoptic colonoscopy through colostomy (procedure)"
+                },
+                {
+                  "code": "851000119109",
+                  "display": "History of colonoscopy (situation)"
+                }
+              ]
+            },
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "version": "2018",
+              "concept": [
+                {
+                  "code": "44388",
+                  "display": "Colonoscopy through stoma; diagnostic, including collection of specimen(s) by brushing or washing, when performed (separate procedure)"
+                },
+                {
+                  "code": "44389",
+                  "display": "Colonoscopy through stoma; with biopsy, single or multiple"
+                },
+                {
+                  "code": "44390",
+                  "display": "Colonoscopy through stoma; with removal of foreign body(s)"
+                },
+                {
+                  "code": "44391",
+                  "display": "Colonoscopy through stoma; with control of bleeding, any method"
+                },
+                {
+                  "code": "44392",
+                  "display": "Colonoscopy through stoma; with removal of tumor(s), polyp(s), or other lesion(s) by hot biopsy forceps"
+                },
+                {
+                  "code": "44394",
+                  "display": "Colonoscopy through stoma; with removal of tumor(s), polyp(s), or other lesion(s) by snare technique"
+                },
+                {
+                  "code": "44401",
+                  "display": "Colonoscopy through stoma; with ablation of tumor(s), polyp(s), or other lesion(s) (includes pre-and post-dilation and guide wire passage, when performed)"
+                },
+                {
+                  "code": "44402",
+                  "display": "Colonoscopy through stoma; with endoscopic stent placement (including pre- and post-dilation and guide wire passage, when performed)"
+                },
+                {
+                  "code": "44403",
+                  "display": "Colonoscopy through stoma; with endoscopic mucosal resection"
+                },
+                {
+                  "code": "44404",
+                  "display": "Colonoscopy through stoma; with directed submucosal injection(s), any substance"
+                },
+                {
+                  "code": "44405",
+                  "display": "Colonoscopy through stoma; with transendoscopic balloon dilation"
+                },
+                {
+                  "code": "44406",
+                  "display": "Colonoscopy through stoma; with endoscopic ultrasound examination, limited to the sigmoid, descending, transverse, or ascending colon and cecum and adjacent structures"
+                },
+                {
+                  "code": "44407",
+                  "display": "Colonoscopy through stoma; with transendoscopic ultrasound guided intramural or transmural fine needle aspiration/biopsy(s), includes endoscopic ultrasound examination limited to the sigmoid, descending, transverse, or ascending colon and cecum and adjacent structures"
+                },
+                {
+                  "code": "44408",
+                  "display": "Colonoscopy through stoma; with decompression (for pathologic distention) (eg, volvulus, megacolon), including placement of decompression tube, when performed"
+                },
+                {
+                  "code": "45378",
+                  "display": "Colonoscopy, flexible; diagnostic, including collection of specimen(s) by brushing or washing, when performed (separate procedure)"
+                },
+                {
+                  "code": "45379",
+                  "display": "Colonoscopy, flexible; with removal of foreign body(s)"
+                },
+                {
+                  "code": "45380",
+                  "display": "Colonoscopy, flexible; with biopsy, single or multiple"
+                },
+                {
+                  "code": "45381",
+                  "display": "Colonoscopy, flexible; with directed submucosal injection(s), any substance"
+                },
+                {
+                  "code": "45382",
+                  "display": "Colonoscopy, flexible; with control of bleeding, any method"
+                },
+                {
+                  "code": "45384",
+                  "display": "Colonoscopy, flexible; with removal of tumor(s), polyp(s), or other lesion(s) by hot biopsy forceps"
+                },
+                {
+                  "code": "45385",
+                  "display": "Colonoscopy, flexible; with removal of tumor(s), polyp(s), or other lesion(s) by snare technique"
+                },
+                {
+                  "code": "45386",
+                  "display": "Colonoscopy, flexible; with transendoscopic balloon dilation"
+                },
+                {
+                  "code": "45388",
+                  "display": "Colonoscopy, flexible; with ablation of tumor(s), polyp(s), or other lesion(s) (includes pre- and post-dilation and guide wire passage, when performed)"
+                },
+                {
+                  "code": "45389",
+                  "display": "Colonoscopy, flexible; with endoscopic stent placement (includes pre- and post-dilation and guide wire passage, when performed)"
+                },
+                {
+                  "code": "45390",
+                  "display": "Colonoscopy, flexible; with endoscopic mucosal resection"
+                },
+                {
+                  "code": "45391",
+                  "display": "Colonoscopy, flexible; with endoscopic ultrasound examination limited to the rectum, sigmoid, descending, transverse, or ascending colon and cecum, and adjacent structures"
+                },
+                {
+                  "code": "45392",
+                  "display": "Colonoscopy, flexible; with transendoscopic ultrasound guided intramural or transmural fine needle aspiration/biopsy(s), includes endoscopic ultrasound examination limited to the rectum, sigmoid, descending, transverse, or ascending colon and cecum, and adjacent structures"
+                },
+                {
+                  "code": "45393",
+                  "display": "Colonoscopy, flexible; with decompression (for pathologic distention) (eg, volvulus, megacolon), including placement of decompression tube, when performed"
+                },
+                {
+                  "code": "45398",
+                  "display": "Colonoscopy, flexible; with band ligation(s) (eg, hemorrhoids)"
+                }
+              ]
+            },
+            {
+              "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo/index.html",
+              "version": "2018",
+              "concept": [
+                {
+                  "code": "G0105",
+                  "display": "Colorectal cancer screening; colonoscopy on individual at high risk"
+                },
+                {
+                  "code": "G0121",
+                  "display": "Colorectal cancer screening; colonoscopy on individual not meeting criteria for high risk"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "ValueSet/2.16.840.1.113883.3.464.1003.108.12.1020"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "2.16.840.1.113883.3.464.1003.198.12.1011",
+        "title": "Fecal Occult Blood Test (FOBT)",
+        "status": "active",
+        "publisher": "National Committee for Quality Assurance",
+        "compose": {
+          "include": [
+            {
+              "system": "http://loinc.org",
+              "version": "2.64",
+              "concept": [
+                {
+                  "code": "12503-9",
+                  "display": "Hemoglobin.gastrointestinal [Presence] in Stool --4th specimen"
+                },
+                {
+                  "code": "12504-7",
+                  "display": "Hemoglobin.gastrointestinal [Presence] in Stool --5th specimen"
+                },
+                {
+                  "code": "14563-1",
+                  "display": "Hemoglobin.gastrointestinal [Presence] in Stool --1st specimen"
+                },
+                {
+                  "code": "14564-9",
+                  "display": "Hemoglobin.gastrointestinal [Presence] in Stool --2nd specimen"
+                },
+                {
+                  "code": "14565-6",
+                  "display": "Hemoglobin.gastrointestinal [Presence] in Stool --3rd specimen"
+                },
+                {
+                  "code": "2335-8",
+                  "display": "Hemoglobin.gastrointestinal [Presence] in Stool"
+                },
+                {
+                  "code": "27396-1",
+                  "display": "Hemoglobin.gastrointestinal [Mass/mass] in Stool"
+                },
+                {
+                  "code": "27401-9",
+                  "display": "Hemoglobin.gastrointestinal [Presence] in Stool --6th specimen"
+                },
+                {
+                  "code": "27925-7",
+                  "display": "Hemoglobin.gastrointestinal [Presence] in Stool --7th specimen"
+                },
+                {
+                  "code": "27926-5",
+                  "display": "Hemoglobin.gastrointestinal [Presence] in Stool --8th specimen"
+                },
+                {
+                  "code": "29771-3",
+                  "display": "Hemoglobin.gastrointestinal.lower [Presence] in Stool by Immunoassay"
+                },
+                {
+                  "code": "56490-6",
+                  "display": "Hemoglobin.gastrointestinal.lower [Presence] in Stool by Immunoassay --2nd specimen"
+                },
+                {
+                  "code": "56491-4",
+                  "display": "Hemoglobin.gastrointestinal.lower [Presence] in Stool by Immunoassay --3rd specimen"
+                },
+                {
+                  "code": "57905-2",
+                  "display": "Hemoglobin.gastrointestinal.lower [Presence] in Stool by Immunoassay --1st specimen"
+                },
+                {
+                  "code": "58453-2",
+                  "display": "Hemoglobin.gastrointestinal.lower [Mass/volume] in Stool by Immunoassay"
+                },
+                {
+                  "code": "80372-6",
+                  "display": "Hemoglobin.gastrointestinal [Presence] in Stool by Rapid immunoassay"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "ValueSet/2.16.840.1.113883.3.464.1003.198.12.1011"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "2.16.840.1.113883.3.464.1003.198.12.1010",
+        "title": "Flexible Sigmoidoscopy",
+        "status": "active",
+        "publisher": "National Committee for Quality Assurance",
+        "compose": {
+          "include": [
+            {
+              "system": "http://snomed.info/sct",
+              "version": "2018-09",
+              "concept": [
+                {
+                  "code": "396226005",
+                  "display": "Flexible fiberoptic sigmoidoscopy with biopsy (procedure)"
+                },
+                {
+                  "code": "425634007",
+                  "display": "Diagnostic endoscopic examination of lower bowel and sampling for bacterial overgrowth using fiberoptic sigmoidoscope (procedure)"
+                },
+                {
+                  "code": "44441009",
+                  "display": "Flexible fiberoptic sigmoidoscopy (procedure)"
+                }
+              ]
+            },
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "version": "2018",
+              "concept": [
+                {
+                  "code": "45330",
+                  "display": "Sigmoidoscopy, flexible; diagnostic, including collection of specimen(s) by brushing or washing, when performed (separate procedure)"
+                },
+                {
+                  "code": "45331",
+                  "display": "Sigmoidoscopy, flexible; with biopsy, single or multiple"
+                },
+                {
+                  "code": "45332",
+                  "display": "Sigmoidoscopy, flexible; with removal of foreign body(s)"
+                },
+                {
+                  "code": "45333",
+                  "display": "Sigmoidoscopy, flexible; with removal of tumor(s), polyp(s), or other lesion(s) by hot biopsy forceps"
+                },
+                {
+                  "code": "45334",
+                  "display": "Sigmoidoscopy, flexible; with control of bleeding, any method"
+                },
+                {
+                  "code": "45335",
+                  "display": "Sigmoidoscopy, flexible; with directed submucosal injection(s), any substance"
+                },
+                {
+                  "code": "45337",
+                  "display": "Sigmoidoscopy, flexible; with decompression (for pathologic distention) (eg, volvulus, megacolon), including placement of decompression tube, when performed"
+                },
+                {
+                  "code": "45338",
+                  "display": "Sigmoidoscopy, flexible; with removal of tumor(s), polyp(s), or other lesion(s) by snare technique"
+                },
+                {
+                  "code": "45340",
+                  "display": "Sigmoidoscopy, flexible; with transendoscopic balloon dilation"
+                },
+                {
+                  "code": "45341",
+                  "display": "Sigmoidoscopy, flexible; with endoscopic ultrasound examination"
+                },
+                {
+                  "code": "45342",
+                  "display": "Sigmoidoscopy, flexible; with transendoscopic ultrasound guided intramural or transmural fine needle aspiration/biopsy(s)"
+                },
+                {
+                  "code": "45346",
+                  "display": "Sigmoidoscopy, flexible; with ablation of tumor(s), polyp(s), or other lesion(s) (includes pre- and post-dilation and guide wire passage, when performed)"
+                },
+                {
+                  "code": "45347",
+                  "display": "Sigmoidoscopy, flexible; with placement of endoscopic stent (includes pre- and post-dilation and guide wire passage, when performed)"
+                },
+                {
+                  "code": "45349",
+                  "display": "Sigmoidoscopy, flexible; with endoscopic mucosal resection"
+                },
+                {
+                  "code": "45350",
+                  "display": "Sigmoidoscopy, flexible; with band ligation(s) (eg, hemorrhoids)"
+                }
+              ]
+            },
+            {
+              "system": "https://www.cms.gov/Medicare/Coding/MedHCPCSGenInfo/index.html",
+              "version": "2018",
+              "concept": [
+                {
+                  "code": "G0104",
+                  "display": "Colorectal cancer screening; flexible sigmoidoscopy"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "ValueSet/2.16.840.1.113883.3.464.1003.198.12.1010"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "2.16.840.1.113883.3.464.1003.108.12.1001",
+        "title": "Malignant Neoplasm of Colon",
+        "status": "active",
+        "publisher": "National Committee for Quality Assurance",
+        "compose": {
+          "include": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10",
+              "version": "2019",
+              "concept": [
+                {
+                  "code": "C18.0",
+                  "display": "Malignant neoplasm of cecum"
+                },
+                {
+                  "code": "C18.1",
+                  "display": "Malignant neoplasm of appendix"
+                },
+                {
+                  "code": "C18.2",
+                  "display": "Malignant neoplasm of ascending colon"
+                },
+                {
+                  "code": "C18.3",
+                  "display": "Malignant neoplasm of hepatic flexure"
+                },
+                {
+                  "code": "C18.4",
+                  "display": "Malignant neoplasm of transverse colon"
+                },
+                {
+                  "code": "C18.5",
+                  "display": "Malignant neoplasm of splenic flexure"
+                },
+                {
+                  "code": "C18.6",
+                  "display": "Malignant neoplasm of descending colon"
+                },
+                {
+                  "code": "C18.7",
+                  "display": "Malignant neoplasm of sigmoid colon"
+                },
+                {
+                  "code": "C18.8",
+                  "display": "Malignant neoplasm of overlapping sites of colon"
+                },
+                {
+                  "code": "C18.9",
+                  "display": "Malignant neoplasm of colon, unspecified"
+                },
+                {
+                  "code": "C19",
+                  "display": "Malignant neoplasm of rectosigmoid junction"
+                },
+                {
+                  "code": "C20",
+                  "display": "Malignant neoplasm of rectum"
+                },
+                {
+                  "code": "C21.2",
+                  "display": "Malignant neoplasm of cloacogenic zone"
+                },
+                {
+                  "code": "C21.8",
+                  "display": "Malignant neoplasm of overlapping sites of rectum, anus and anal canal"
+                },
+                {
+                  "code": "C78.5",
+                  "display": "Secondary malignant neoplasm of large intestine and rectum"
+                }
+              ]
+            },
+            {
+              "system": "http://hl7.org/fhir/sid/icd-9-cm",
+              "version": "2013",
+              "concept": [
+                {
+                  "code": "153.0",
+                  "display": "Malignant neoplasm of hepatic flexure"
+                },
+                {
+                  "code": "153.1",
+                  "display": "Malignant neoplasm of transverse colon"
+                },
+                {
+                  "code": "153.2",
+                  "display": "Malignant neoplasm of descending colon"
+                },
+                {
+                  "code": "153.3",
+                  "display": "Malignant neoplasm of sigmoid colon"
+                },
+                {
+                  "code": "153.4",
+                  "display": "Malignant neoplasm of cecum"
+                },
+                {
+                  "code": "153.5",
+                  "display": "Malignant neoplasm of appendix vermiformis"
+                },
+                {
+                  "code": "153.6",
+                  "display": "Malignant neoplasm of ascending colon"
+                },
+                {
+                  "code": "153.7",
+                  "display": "Malignant neoplasm of splenic flexure"
+                },
+                {
+                  "code": "153.8",
+                  "display": "Malignant neoplasm of other specified sites of large intestine"
+                },
+                {
+                  "code": "153.9",
+                  "display": "Malignant neoplasm of colon, unspecified site"
+                },
+                {
+                  "code": "154.0",
+                  "display": "Malignant neoplasm of rectosigmoid junction"
+                },
+                {
+                  "code": "154.1",
+                  "display": "Malignant neoplasm of rectum"
+                },
+                {
+                  "code": "197.5",
+                  "display": "Secondary malignant neoplasm of large intestine and rectum"
+                }
+              ]
+            },
+            {
+              "system": "http://snomed.info/sct",
+              "version": "2018-09",
+              "concept": [
+                {
+                  "code": "109838007",
+                  "display": "Overlapping malignant neoplasm of colon (disorder)"
+                },
+                {
+                  "code": "133751000119102",
+                  "display": "Lymphoma of colon (disorder)"
+                },
+                {
+                  "code": "1701000119104",
+                  "display": "Primary adenocarcinoma of colon (disorder)"
+                },
+                {
+                  "code": "184881000119106",
+                  "display": "Primary adenocarcinoma of rectosigmoid junction (disorder)"
+                },
+                {
+                  "code": "187757001",
+                  "display": "Malignant neoplasm, overlapping lesion of colon (disorder)"
+                },
+                {
+                  "code": "269533000",
+                  "display": "Carcinoma of colon (disorder)"
+                },
+                {
+                  "code": "269544008",
+                  "display": "Carcinoma of the rectosigmoid junction (disorder)"
+                },
+                {
+                  "code": "285312008",
+                  "display": "Carcinoma of sigmoid colon (disorder)"
+                },
+                {
+                  "code": "285611007",
+                  "display": "Metastasis to colon of unknown primary (disorder)"
+                },
+                {
+                  "code": "301756000",
+                  "display": "Adenocarcinoma of sigmoid colon (disorder)"
+                },
+                {
+                  "code": "312111009",
+                  "display": "Carcinoma of ascending colon (disorder)"
+                },
+                {
+                  "code": "312112002",
+                  "display": "Carcinoma of transverse colon (disorder)"
+                },
+                {
+                  "code": "312113007",
+                  "display": "Carcinoma of descending colon (disorder)"
+                },
+                {
+                  "code": "312114001",
+                  "display": "Carcinoma of hepatic flexure (disorder)"
+                },
+                {
+                  "code": "312115000",
+                  "display": "Carcinoma of splenic flexure (disorder)"
+                },
+                {
+                  "code": "314965007",
+                  "display": "Local recurrence of malignant tumor of colon (disorder)"
+                },
+                {
+                  "code": "315058005",
+                  "display": "Hereditary nonpolyposis colon cancer (disorder)"
+                },
+                {
+                  "code": "363406005",
+                  "display": "Malignant neoplasm of colon (disorder)"
+                },
+                {
+                  "code": "363407001",
+                  "display": "Malignant tumor of hepatic flexure (disorder)"
+                },
+                {
+                  "code": "363408006",
+                  "display": "Malignant tumor of transverse colon (disorder)"
+                },
+                {
+                  "code": "363409003",
+                  "display": "Malignant tumor of descending colon (disorder)"
+                },
+                {
+                  "code": "363410008",
+                  "display": "Malignant tumor of sigmoid colon (disorder)"
+                },
+                {
+                  "code": "363412000",
+                  "display": "Malignant tumor of ascending colon (disorder)"
+                },
+                {
+                  "code": "363413005",
+                  "display": "Malignant tumor of splenic flexure (disorder)"
+                },
+                {
+                  "code": "363414004",
+                  "display": "Malignant tumor of rectosigmoid junction (disorder)"
+                },
+                {
+                  "code": "363510005",
+                  "display": "Malignant tumor of large intestine (disorder)"
+                },
+                {
+                  "code": "425178004",
+                  "display": "Adenocarcinoma of rectosigmoid junction (disorder)"
+                },
+                {
+                  "code": "449218003",
+                  "display": "Lymphoma of sigmoid colon (disorder)"
+                },
+                {
+                  "code": "681601000119101",
+                  "display": "Primary adenocarcinoma of ascending colon (disorder)"
+                },
+                {
+                  "code": "716654007",
+                  "display": "Non-polyposis Turcot syndrome (disorder)"
+                },
+                {
+                  "code": "721695008",
+                  "display": "Primary adenocarcinoma of ascending colon and right flexure (disorder)"
+                },
+                {
+                  "code": "721696009",
+                  "display": "Primary adenocarcinoma of transverse colon (disorder)"
+                },
+                {
+                  "code": "721699002",
+                  "display": "Primary adenocarcinoma of descending colon and splenic flexure (disorder)"
+                },
+                {
+                  "code": "737058005",
+                  "display": "Microsatellite instability-high colorectal cancer (disorder)"
+                },
+                {
+                  "code": "93683002",
+                  "display": "Primary malignant neoplasm of ascending colon (disorder)"
+                },
+                {
+                  "code": "93761005",
+                  "display": "Primary malignant neoplasm of colon (disorder)"
+                },
+                {
+                  "code": "93771007",
+                  "display": "Primary malignant neoplasm of descending colon (disorder)"
+                },
+                {
+                  "code": "93826009",
+                  "display": "Primary malignant neoplasm of hepatic flexure of colon (disorder)"
+                },
+                {
+                  "code": "93980002",
+                  "display": "Primary malignant neoplasm of rectosigmoid junction (disorder)"
+                },
+                {
+                  "code": "94006002",
+                  "display": "Primary malignant neoplasm of sigmoid colon (disorder)"
+                },
+                {
+                  "code": "94072004",
+                  "display": "Primary malignant neoplasm of splenic flexure of colon (disorder)"
+                },
+                {
+                  "code": "94105000",
+                  "display": "Primary malignant neoplasm of transverse colon (disorder)"
+                },
+                {
+                  "code": "94179005",
+                  "display": "Secondary malignant neoplasm of ascending colon (disorder)"
+                },
+                {
+                  "code": "94260004",
+                  "display": "Secondary malignant neoplasm of colon (disorder)"
+                },
+                {
+                  "code": "94271003",
+                  "display": "Secondary malignant neoplasm of descending colon (disorder)"
+                },
+                {
+                  "code": "94328005",
+                  "display": "Secondary malignant neoplasm of hepatic flexure of colon (disorder)"
+                },
+                {
+                  "code": "94509004",
+                  "display": "Secondary malignant neoplasm of rectosigmoid junction (disorder)"
+                },
+                {
+                  "code": "94538001",
+                  "display": "Secondary malignant neoplasm of sigmoid colon (disorder)"
+                },
+                {
+                  "code": "94604000",
+                  "display": "Secondary malignant neoplasm of splenic flexure of colon (disorder)"
+                },
+                {
+                  "code": "94643001",
+                  "display": "Secondary malignant neoplasm of transverse colon (disorder)"
+                },
+                {
+                  "code": "96281000119107",
+                  "display": "Overlapping malignant neoplasm of colon and rectum (disorder)"
+                },
+                {
+                  "code": "96981000119102",
+                  "display": "Malignant neoplasm of rectosigmoid junction metastatic to brain (disorder)"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "ValueSet/2.16.840.1.113883.3.464.1003.108.12.1001"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "2.16.840.1.113883.3.464.1003.198.12.1019",
+        "title": "Total Colectomy",
+        "status": "active",
+        "publisher": "National Committee for Quality Assurance",
+        "compose": {
+          "include": [
+            {
+              "system": "http://snomed.info/sct",
+              "version": "2018-09",
+              "concept": [
+                {
+                  "code": "26390003",
+                  "display": "Total colectomy (procedure)"
+                },
+                {
+                  "code": "303401008",
+                  "display": "Parks panproctocolectomy, anastomosis of ileum to anus and creation of pouch (procedure)"
+                },
+                {
+                  "code": "307666008",
+                  "display": "Total colectomy and ileostomy (procedure)"
+                },
+                {
+                  "code": "307667004",
+                  "display": "Total colectomy, ileostomy and rectal mucous fistula (procedure)"
+                },
+                {
+                  "code": "307669001",
+                  "display": "Total colectomy, ileostomy and closure of rectal stump (procedure)"
+                },
+                {
+                  "code": "31130001",
+                  "display": "Total abdominal colectomy with proctectomy and ileostomy (procedure)"
+                },
+                {
+                  "code": "36192008",
+                  "display": "Total abdominal colectomy with ileoproctostomy (procedure)"
+                },
+                {
+                  "code": "44751009",
+                  "display": "Total abdominal colectomy with proctectomy and continent ileostomy (procedure)"
+                },
+                {
+                  "code": "456004",
+                  "display": "Total abdominal colectomy with ileostomy (procedure)"
+                },
+                {
+                  "code": "80294005",
+                  "display": "Total abdominal colectomy with rectal mucosectomy and ileoanal anastomosis (procedure)"
+                }
+              ]
+            },
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "version": "2018",
+              "concept": [
+                {
+                  "code": "44150",
+                  "display": "Colectomy, total, abdominal, without proctectomy; with ileostomy or ileoproctostomy"
+                },
+                {
+                  "code": "44151",
+                  "display": "Colectomy, total, abdominal, without proctectomy; with continent ileostomy"
+                },
+                {
+                  "code": "44155",
+                  "display": "Colectomy, total, abdominal, with proctectomy; with ileostomy"
+                },
+                {
+                  "code": "44156",
+                  "display": "Colectomy, total, abdominal, with proctectomy; with continent ileostomy"
+                },
+                {
+                  "code": "44157",
+                  "display": "Colectomy, total, abdominal, with proctectomy; with ileoanal anastomosis, includes loop ileostomy, and rectal mucosectomy, when performed"
+                },
+                {
+                  "code": "44158",
+                  "display": "Colectomy, total, abdominal, with proctectomy; with ileoanal anastomosis, creation of ileal reservoir (S or J), includes loop ileostomy, and rectal mucosectomy, when performed"
+                },
+                {
+                  "code": "44210",
+                  "display": "Laparoscopy, surgical; colectomy, total, abdominal, without proctectomy, with ileostomy or ileoproctostomy"
+                },
+                {
+                  "code": "44211",
+                  "display": "Laparoscopy, surgical; colectomy, total, abdominal, with proctectomy, with ileoanal anastomosis, creation of ileal reservoir (S or J), with loop ileostomy, includes rectal mucosectomy, when performed"
+                },
+                {
+                  "code": "44212",
+                  "display": "Laparoscopy, surgical; colectomy, total, abdominal, with proctectomy, with ileostomy"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "ValueSet/2.16.840.1.113883.3.464.1003.198.12.1019"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "2.16.840.1.113883.3.464.1003.108.12.1039",
+        "title": "FIT DNA",
+        "status": "active",
+        "publisher": "National Committee for Quality Assurance",
+        "compose": {
+          "include": [
+            {
+              "system": "http://loinc.org",
+              "version": "2.64",
+              "concept": [
+                {
+                  "code": "77353-1",
+                  "display": "Noninvasive colorectal cancer DNA and occult blood screening [Interpretation] in Stool Narrative"
+                },
+                {
+                  "code": "77354-9",
+                  "display": "Noninvasive colorectal cancer DNA and occult blood screening [Presence] in Stool"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "ValueSet/2.16.840.1.113883.3.464.1003.108.12.1039"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "ValueSet",
+        "id": "2.16.840.1.113883.3.464.1003.108.12.1038",
+        "title": "CT Colonography",
+        "status": "active",
+        "publisher": "National Committee for Quality Assurance",
+        "compose": {
+          "include": [
+            {
+              "system": "http://snomed.info/sct",
+              "version": "2018-09",
+              "concept": [
+                {
+                  "code": "418714002",
+                  "display": "Virtual computed tomography colonoscopy (procedure)"
+                }
+              ]
+            },
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "version": "2018",
+              "concept": [
+                {
+                  "code": "74261",
+                  "display": "Computed tomographic (CT) colonography, diagnostic, including image postprocessing; without contrast material"
+                },
+                {
+                  "code": "74262",
+                  "display": "Computed tomographic (CT) colonography, diagnostic, including image postprocessing; with contrast material(s) including non-contrast images, if performed"
+                },
+                {
+                  "code": "74263",
+                  "display": "Computed tomographic (CT) colonography, screening, including image postprocessing"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "ValueSet/2.16.840.1.113883.3.464.1003.108.12.1038"
+      }
+    }
+  ]
+}

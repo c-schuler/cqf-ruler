@@ -6,7 +6,7 @@ import org.hl7.fhir.dstu3.model.Range;
 
 
 @DatatypeDef(name="ResultComponent")
-public class                ResultComponent extends Component {
+public class ResultComponent extends Component {
 
     @Child(name="referenceRange", order=0)
             private Range referenceRange;

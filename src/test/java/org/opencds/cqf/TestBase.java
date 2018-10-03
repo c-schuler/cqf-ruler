@@ -42,6 +42,8 @@ public class TestBase {
         measureTests.careGapTestBCS();
         measureTests.submitDataTest_NonTransaction();
         measureTests.submitDataTest_Transaction();
+        measureTests.populationMeasureCMS125_FHIR();
+        measureTests.populationMeasureCMS125_QDM();
     }
 
     @Test

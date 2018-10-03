@@ -1,11 +1,15 @@
 package org.opencds.cqf.qdm.providers;
 
+import ca.uhn.fhir.rest.client.api.ServerValidationModeEnum;
 import ca.uhn.fhir.rest.server.IResourceProvider;
 import org.hl7.fhir.dstu3.model.*;
 import org.hl7.fhir.dstu3.model.Quantity;
 import org.hl7.fhir.instance.model.api.IPrimitiveType;
 import org.opencds.cqf.cql.runtime.*;
 import org.opencds.cqf.providers.JpaDataProvider;
+import org.opencds.cqf.qdm.model.*;
+import org.opencds.cqf.qdm.model.Patient;
+import org.opencds.cqf.qdm.model.Ratio;
 
 import java.time.ZoneOffset;
 import java.util.ArrayList;
@@ -21,6 +25,31 @@ public class QdmDataProvider extends JpaDataProvider {
         super(providers);
         setPackageName("org.opencds.cqf.qdm.model");
         adapter = new QdmAdapter(this);
+        fhirContext.registerCustomType(Component.class);
+        fhirContext.registerCustomType(Diagnosis.class);
+        fhirContext.registerCustomType(PositiveDiagnosticStudyPerformed.class);
+        fhirContext.registerCustomType(NegativeDiagnosticStudyPerformed.class);
+        fhirContext.registerCustomType(PositiveEncounterPerformed.class);
+        fhirContext.registerCustomType(NegativeEncounterPerformed.class);
+        fhirContext.registerCustomType(FacilityLocation.class);
+        fhirContext.registerCustomType(Id.class);
+        fhirContext.registerCustomType(PositiveInterventionOrder.class);
+        fhirContext.registerCustomType(NegativeInterventionOrder.class);
+        fhirContext.registerCustomType(PositiveInterventionPerformed.class);
+        fhirContext.registerCustomType(NegativeInterventionPerformed.class);
+        fhirContext.registerCustomType(PositiveLaboratoryTestPerformed.class);
+        fhirContext.registerCustomType(NegativeLaboratoryTestPerformed.class);
+        fhirContext.registerCustomType(Patient.class);
+        fhirContext.registerCustomType(PatientCharacteristicBirthdate.class);
+        fhirContext.registerCustomType(PatientCharacteristicEthnicity.class);
+        fhirContext.registerCustomType(PatientCharacteristicPayer.class);
+        fhirContext.registerCustomType(PatientCharacteristicRace.class);
+        fhirContext.registerCustomType(PatientCharacteristicSex.class);
+        fhirContext.registerCustomType(PositiveProcedurePerformed.class);
+        fhirContext.registerCustomType(NegativeProcedurePerformed.class);
+        fhirContext.registerCustomType(Ratio.class);
+        fhirContext.registerCustomType(ResultComponent.class);
+        fhirContext.getRestfulClientFactory().setServerValidationMode(ServerValidationModeEnum.NEVER);
     }
 
     @Override
@@ -31,6 +60,12 @@ public class QdmDataProvider extends JpaDataProvider {
         if (codePath != null) {
             codePath = QdmAdapter.mapCodePath(dataType, codePath);
         }
+        // TODO - add dateProperty mapping
+        datePath = null;
+        dateLowPath = null;
+        dateHighPath = null;
+        dateRange = null;
+
         Iterable<Object> fhirResources = super.retrieve(context, contextValue, adapter.mapToFhirType(dataType), templateId, codePath, codes, valueSet, datePath, dateLowPath, dateHighPath, dateRange);
         List<Object> qdmResources = new ArrayList<>();
 
@@ -59,6 +94,15 @@ public class QdmDataProvider extends JpaDataProvider {
             );
         }
 
+        if (result instanceof Coding) {
+            Coding coding = (Coding) result;
+            return new Code()
+                    .withCode(coding.getCode())
+                    .withSystem(coding.getSystem())
+                    .withVersion(coding.getVersion())
+                    .withDisplay(coding.getDisplay());
+        }
+
         if (result instanceof Range) {
             Range range = (Range) result;
             return new Interval(
@@ -82,6 +126,11 @@ public class QdmDataProvider extends JpaDataProvider {
         }
 
         return super.toJavaPrimitive(result, source);
+    }
+
+    @Override
+    public Object resolvePath(Object target, String path) {
+        return toJavaPrimitive(super.resolvePath(target, path), target);
     }
 
 }

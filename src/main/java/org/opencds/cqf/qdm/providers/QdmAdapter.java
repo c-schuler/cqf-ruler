@@ -103,7 +103,7 @@ public class QdmAdapter {
             case "PositiveEncounterPerformed": case "NegativeEncounterPerformed": {
                 switch (qdmPath) {
                     case "code":
-                        return "class";
+                        return "type";
                 }
             }
             case "PatientCharacteristicSex": return "gender";
@@ -185,7 +185,7 @@ public class QdmAdapter {
 
         // id
         if (encounter.hasId()) {
-            encounterPerformed.setId(new Id().setValue(encounter.getId()));
+            encounterPerformed.setId(new Id().setValue(new StringType(encounter.getId())));
         }
 
         // Code
@@ -473,7 +473,7 @@ public class QdmAdapter {
 
         // id
         if (diagnosticReport.hasId()) {
-            diagnosticStudyPerformed.setId(new Id().setValue(diagnosticReport.getId()));
+            diagnosticStudyPerformed.setId(new Id().setValue(new StringType(diagnosticReport.getId())));
         }
 
         if (diagnosticReport.hasPerformer()) {
@@ -521,7 +521,7 @@ public class QdmAdapter {
 
         // id
         if (procedureRequest.hasId()) {
-            interventionOrder.setId(new Id().setValue(procedureRequest.getId()));
+            interventionOrder.setId(new Id().setValue(new StringType(procedureRequest.getId())));
         }
 
         // Source
@@ -590,7 +590,7 @@ public class QdmAdapter {
 
         // id
         if (procedure.hasId()) {
-            interventionPerformed.setId(new Id().setValue(procedure.getId()));
+            interventionPerformed.setId(new Id().setValue(new StringType(procedure.getId())));
         }
 
         // Source
@@ -718,7 +718,7 @@ public class QdmAdapter {
 
         // id
         if (observation.hasId()) {
-            laboratoryTestPerformed.setId(new Id().setValue(observation.getId()));
+            laboratoryTestPerformed.setId(new Id().setValue(new StringType(observation.getId())));
         }
 
         // Source
@@ -804,7 +804,7 @@ public class QdmAdapter {
 
         // id
         if (procedure.hasId()) {
-            procedurePerformed.setId(new Id().setValue(procedure.getId()));
+            procedurePerformed.setId(new Id().setValue(new StringType(procedure.getId())));
         }
 
         // Source
@@ -834,12 +834,12 @@ public class QdmAdapter {
                 }
             }
         }
-        else if (patient.hasBirthDate()) {
+        if (patient.hasBirthDate() && patientCharacteristicBirthdate.getBirthDatetime() == null) {
             patientCharacteristicBirthdate.setBirthDatetime(new DateTimeType(patient.getBirthDate()));
         }
 
         if (patient.hasId()) {
-            patientCharacteristicBirthdate.setId(new Id().setValue(patient.getId()));
+            patientCharacteristicBirthdate.setId(new Id().setValue(new StringType(patient.getId())));
         }
 
         return patientCharacteristicBirthdate;
@@ -864,7 +864,7 @@ public class QdmAdapter {
         }
 
         if (patient.hasId()) {
-            patientCharacteristicSex.setId(new Id().setValue(patient.getId()));
+            patientCharacteristicSex.setId(new Id().setValue(new StringType(patient.getId())));
         }
 
         return patientCharacteristicSex;
