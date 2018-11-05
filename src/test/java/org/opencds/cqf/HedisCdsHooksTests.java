@@ -26,7 +26,7 @@ class HedisCdsHooksTests {
         String cdsHooksRequest = scanner.hasNext() ? scanner.next() : "";
         byte[] data = cdsHooksRequest.getBytes("UTF-8");
 
-        URL url = new URL("http://localhost:" + server.ourPort + "/cqf-ruler/cds-services/bcs-decision-support");
+        URL url = new URL("http://localhost:" + server.ourPort + "/cqf-ruler/stu3/cds-services/bcs-decision-support");
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");

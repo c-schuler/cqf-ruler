@@ -44,7 +44,7 @@ public class TestBase {
         measureTests.submitDataTest_Transaction();
     }
 
-    @Test
+    //@Test
     public void runOpioidGuidanceTests() throws Exception {
         CdcOpioidGuidanceTests opioidTests = new CdcOpioidGuidanceTests(server);
         opioidTests.CdcOpioidGuidanceRecommendationFourTest_LongActingOpioid();
@@ -87,9 +87,9 @@ public class TestBase {
     public void runHedisCdsTests() throws IOException {
         HedisCdsHooksTests hedisTests = new HedisCdsHooksTests(server);
         hedisTests.BCSCdsHooksPatientViewTest();
-        hedisTests.BCSCdsHooksPatientViewTestError();
-        hedisTests.CCSCdsHooksPatientViewTest();
-        hedisTests.COLCdsHooksPatientViewTest();
+//        hedisTests.BCSCdsHooksPatientViewTestError();
+//        hedisTests.CCSCdsHooksPatientViewTest();
+//        hedisTests.COLCdsHooksPatientViewTest();
     }
 
     @Test

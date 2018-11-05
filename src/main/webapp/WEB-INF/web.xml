@@ -32,10 +32,28 @@
     </servlet>
 
     <servlet>
-        <servlet-name>cdsServicesServlet</servlet-name>
-        <servlet-class>org.opencds.cqf.servlet.CdsServicesServlet</servlet-class>
+        <servlet-name>cdsHooksStu3</servlet-name>
+        <servlet-class>org.opencds.cqf.servlet.CdsHooksStu3</servlet-class>
         <load-on-startup>5</load-on-startup>
     </servlet>
+
+    <servlet>
+        <servlet-name>cdsHooksDstu2</servlet-name>
+        <servlet-class>org.opencds.cqf.servlet.CdsHooksDstu2</servlet-class>
+        <load-on-startup>5</load-on-startup>
+    </servlet>
+
+    <!--<servlet>-->
+        <!--<servlet-name>cdsHooks</servlet-name>-->
+        <!--<servlet-class>org.opencds.cqf.servlet.CdsHooks</servlet-class>-->
+        <!--<load-on-startup>5</load-on-startup>-->
+    <!--</servlet>-->
+
+    <!--<servlet>-->
+        <!--<servlet-name>cdsServicesServlet</servlet-name>-->
+        <!--<servlet-class>org.opencds.cqf.servlet.CdsServicesServlet</servlet-class>-->
+        <!--<load-on-startup>5</load-on-startup>-->
+    <!--</servlet>-->
 
     <servlet>
         <servlet-name>spring</servlet-name>
@@ -113,14 +131,34 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>cdsServicesServlet</servlet-name>-->
+        <!--<url-pattern>/cds-services</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>cdsServicesServlet</servlet-name>-->
+        <!--<url-pattern>/cds-services/*</url-pattern>-->
+    <!--</servlet-mapping>-->
+
     <servlet-mapping>
-        <servlet-name>cdsServicesServlet</servlet-name>
-        <url-pattern>/cds-services</url-pattern>
+        <servlet-name>cdsHooksDstu2</servlet-name>
+        <url-pattern>dstu2/cds-services</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>cdsServicesServlet</servlet-name>
-        <url-pattern>/cds-services/*</url-pattern>
+        <servlet-name>cdsHooksDstu2</servlet-name>
+        <url-pattern>dstu2/cds-services/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>cdsHooksStu3</servlet-name>
+        <url-pattern>stu3/cds-services</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>cdsHooksStu3</servlet-name>
+        <url-pattern>stu3/cds-services/*</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
