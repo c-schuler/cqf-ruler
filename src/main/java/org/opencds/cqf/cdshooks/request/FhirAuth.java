@@ -38,8 +38,8 @@ public class FhirAuth extends Field<Object> {
     }
 
     public FhirAuth(Object value) {
+        setOptional(true);
         setValue(value);
-        setOptionality(FieldOptionality.OPTIONAL);
     }
 
     private List<Field> getFieldList() {
@@ -85,10 +85,12 @@ public class FhirAuth extends Field<Object> {
 
     @Override
     public void validate() {
-        for (Field field : getFieldList()) {
-            field.validate();
-        }
         super.validate();
+        if (getValue() != null) {
+            for (Field field : getFieldList()) {
+                field.validate();
+            }
+        }
     }
 
     public class AccessToken extends Field<String> {
@@ -96,8 +98,8 @@ public class FhirAuth extends Field<Object> {
         public static final String name = "access_token";
 
         private AccessToken(String value) {
+            super.setOptional(false);
             super.setValue(value);
-            setOptionality(FieldOptionality.REQUIRED);
         }
     }
 
@@ -106,8 +108,16 @@ public class FhirAuth extends Field<Object> {
         public static final String name = "token_type";
 
         private TokenType(String value) {
+            super.setOptional(false);
             super.setValue(value);
-            setOptionality(FieldOptionality.REQUIRED);
+        }
+
+        @Override
+        public void validate() {
+            super.validate();
+            if (!getValue().equals("Bearer")) {
+                throw new InvalidRequestException("Expected token_type of Bearer, Found: " + getValue());
+            }
         }
     }
 
@@ -116,8 +126,8 @@ public class FhirAuth extends Field<Object> {
         public static final String name = "expires_in";
 
         private ExpiresIn(Integer value) {
+            super.setOptional(false);
             super.setValue(value);
-            setOptionality(FieldOptionality.REQUIRED);
         }
     }
 
@@ -126,8 +136,8 @@ public class FhirAuth extends Field<Object> {
         public static final String name = "scope";
 
         private Scope(String value) {
+            super.setOptional(false);
             super.setValue(value);
-            setOptionality(FieldOptionality.REQUIRED);
         }
     }
 
@@ -136,8 +146,8 @@ public class FhirAuth extends Field<Object> {
         public static final String name = "subject";
 
         private Subject(String value) {
+            super.setOptional(false);
             super.setValue(value);
-            setOptionality(FieldOptionality.REQUIRED);
         }
     }
 }

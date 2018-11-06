@@ -37,9 +37,9 @@ public class Context extends Field<Object> {
     }
 
     public Context(Object value, FhirContext fhirContext) {
+        setOptional(false);
         this.fhirContext = fhirContext;
         setValue(value);
-        setOptional(false);
     }
 
     private List<Field> getFieldList() {
@@ -81,10 +81,10 @@ public class Context extends Field<Object> {
 
     @Override
     public void validate() {
+        super.validate();
         for (Field field : getFieldList()) {
             field.validate();
         }
-        super.validate();
     }
 
     public class PatientId extends Field<String> {
@@ -92,8 +92,8 @@ public class Context extends Field<Object> {
         public static final String name = "patientId";
 
         private PatientId(String value) {
-            super.setValue(value);
             setOptional(false);
+            super.setValue(value);
         }
     }
 
@@ -102,8 +102,8 @@ public class Context extends Field<Object> {
         public static final String name = "encounterId";
 
         private EncounterId(String value) {
-            super.setValue(value);
             setOptional(true);
+            super.setValue(value);
         }
     }
 
@@ -112,8 +112,8 @@ public class Context extends Field<Object> {
         public static final String name = "medications";
 
         private Medications(Object value) {
-            setValue(value);
             setOptional(true);
+            setValue(value);
         }
 
         @Override
@@ -139,8 +139,8 @@ public class Context extends Field<Object> {
         public static final String name = "orders";
 
         private Orders(Object value) {
-            setValue(value);
             setOptional(true);
+            setValue(value);
         }
 
         @Override

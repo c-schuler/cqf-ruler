@@ -39,6 +39,7 @@ public class FhirServer extends Field<URL> {
     }
 
     public FhirServer(URL value, JpaDataProvider localProvider, FhirVersionEnum version) {
+        setOptional(true);
         super.setValue(value);
         this.localProvider = localProvider;
         if (value != null) {
@@ -47,6 +48,5 @@ public class FhirServer extends Field<URL> {
                             ? new FhirDataProviderDstu2().setEndpoint(value.toString())
                             : new FhirDataProviderStu3().setEndpoint(value.toString());
         }
-        setOptionality(FieldOptionality.OPTIONAL);
     }
 }

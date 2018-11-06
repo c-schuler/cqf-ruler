@@ -2,6 +2,7 @@ package org.opencds.cqf.cdshooks.request;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import org.opencds.cqf.exceptions.InvalidFieldTypeException;
 import org.opencds.cqf.exceptions.InvalidRequestException;
 
 public class Field<T> {
@@ -26,25 +27,37 @@ public class Field<T> {
         if (field == null || field.isJsonNull()) {
             return null;
         }
-        return field.getAsString();
+        try {
+            return field.getAsString();
+        } catch (IllegalStateException | UnsupportedOperationException e) {
+            throw new InvalidFieldTypeException("String", field);
+        }
     }
 
     public static Integer getFieldInt(JsonElement field) {
         if (field == null || field.isJsonNull()) {
             return null;
         }
-        return field.getAsInt();
+        try {
+            return field.getAsInt();
+        } catch (IllegalStateException | UnsupportedOperationException e) {
+            throw new InvalidFieldTypeException("Int", field);
+        }
     }
 
     public static JsonObject getFieldObject(JsonElement field) {
         if (field == null || field.isJsonNull()) {
             return null;
         }
-        return field.getAsJsonObject();
+        try {
+            return field.getAsJsonObject();
+        } catch (IllegalStateException | UnsupportedOperationException e) {
+            throw new InvalidFieldTypeException("Object", field);
+        }
     }
 
     public void validate() {
-        if (isOptional() && value == null) {
+        if (!isOptional() && value == null) {
             throw new InvalidRequestException(
                     "Request is missing the following field: "
                             + this.getClass().getSimpleName().substring(0, 1).toLowerCase()

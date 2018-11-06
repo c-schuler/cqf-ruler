@@ -6,6 +6,6 @@ public class Hook extends Field<String> {
 
     public Hook(String value) {
         super.setValue(value);
-        setOptionality(FieldOptionality.REQUIRED);
+        setOptional(false);
     }
 }
