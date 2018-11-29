@@ -53,7 +53,7 @@ public class FhirServerConfigR4 extends BaseJavaConfigR4 {
 
     @Bean(name = "entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean retVal = new LocalContainerEntityManagerFactoryBean();
+        LocalContainerEntityManagerFactoryBean retVal = super.entityManagerFactory();
         retVal.setPersistenceUnitName("PU_HapiFhirJpaR4");
         retVal.setDataSource(dataSource());
         retVal.setPackagesToScan("ca.uhn.fhir.jpa.entity");
