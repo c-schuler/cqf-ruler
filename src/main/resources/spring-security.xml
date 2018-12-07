@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
+	xsi:schemaLocation="http://www.springframework.org/schema/security  http://www.springframework.org/schema/security/spring-security.xsd 
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security/oauth2 http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
+	<!-- <global-method-security pre-post-annotations="enabled" /> -->
+	<!-- 
+	<http pattern="/*" auto-config="true" use-expressions="true"
+		create-session="ifRequired"
+		<!- - authentication-manager-ref="clientAuthenticationManager">  - ->
+		<intercept-url pattern="/csrf-token" access="permitAll" />
+		<intercept-url pattern="/login/*"
+			access="hasAnyRole('ROLE_ANONYMOUS','ROLE_TESTER')" />
+		<intercept-url pattern="/css/**" access="permitAll" />
+		<intercept-url pattern="/fa/**" access="permitAll" />
+		<intercept-url pattern="/fonts/**" access="permitAll" />
+		<intercept-url pattern="/img/**" access="permitAll" />
+		<intercept-url pattern="/js/**" access="permitAll" />
+		<intercept-url pattern="/resources/**"
+			access="permitAll" />
+		<intercept-url pattern="/user-login"
+			access="hasAnyRole('ROLE_ANONYMOUS','ROLE_TESTER')" />
+		<intercept-url pattern="/*" access="isAuthenticated()" />
+		<form-login login-page="/user-login"
+			username-parameter="ssoId" password-parameter="password"
+			default-target-url="/" authentication-failure-url="/error-login" />
+		<session-management>
+			<concurrency-control max-sessions="1"
+				expired-url="/user-login" />
+		</session-management>
+		<session-management
+			invalid-session-url="/user-login" />
+		<logout logout-success-url="/user_logout"
+			logout-url="/user-login" delete-cookies="JSESSIONID" />
+		<csrf request-matcher-ref="csrfSecurityRequestMatcher" />
+	</http -->
+	<http pattern="/*" auto-config="true" use-expressions="true"
+		create-session="ifRequired">
+		<intercept-url pattern="/login/*"
+			access="hasAnyRole('ROLE_ANONYMOUS','ROLE_TESTER')" />
+		<intercept-url pattern="/css/**" access="permitAll" />
+		<intercept-url pattern="/fa/**" access="permitAll" />
+		<intercept-url pattern="/fonts/**" access="permitAll" />
+		<intercept-url pattern="/img/**" access="permitAll" />
+		<intercept-url pattern="/js/**" access="permitAll" />
+		<intercept-url pattern="/resources/**"
+			access="permitAll" />
+		<intercept-url pattern="/user-login"
+			access="hasAnyRole('ROLE_ANONYMOUS','ROLE_TESTER')" />
+		<intercept-url pattern="/*" access="isAuthenticated()" />
+		<form-login login-page="/user-login"
+			username-parameter="ssoId" password-parameter="password"
+			default-target-url="/" authentication-failure-url="/error-login"
+			authentication-success-handler-ref="customSuccessHandler" />
+		<session-management>
+			<concurrency-control max-sessions="1"
+				expired-url="/user-login" />
+		</session-management>
+		<session-management
+			invalid-session-url="/user-login" />
+		<logout logout-success-url="/user_logout"
+			logout-url="/user-login" delete-cookies="JSESSIONID" />
+
+		<csrf request-matcher-ref="csrfSecurityRequestMatcher" />
+	</http>
+	
+	<!--  OAuth2, for future (?) 
+	
+	<http pattern="/baseDstu3/**" create-session="never"
+		entry-point-ref="oauthAuthenticationEntryPoint"
+		access-decision-manager-ref="accessDecisionManager"
+		use-expressions="true">
+		<anonymous enabled="false" />
+		<intercept-url pattern="/baseDstu3/**"
+			access="hasAnyRole('ROLE_CONSUMER')" method="GET" />
+		<intercept-url pattern="/baseDstu3/**"
+			access="hasAnyRole('ROLE_CONSUMER')" method="POST" />
+		<http-basic />
+		<custom-filter ref="customFilter"
+			after="WEB_ASYNC_MANAGER_FILTER" />
+		<custom-filter ref="resourceServerFilter"
+			before="PRE_AUTH_FILTER" />
+		<access-denied-handler
+			ref="oauthAccessDeniedHandler" />
+		<csrf disabled="true" />
+		<expression-handler ref="oauthWebExpressionHandler" />
+	</http>
+	<oauth:web-expression-handler
+		id="oauthWebExpressionHandler" />
+	<bean id="accessDecisionManager"
+		class="org.springframework.security.access.vote.UnanimousBased"
+		xmlns="http://www.springframework.org/schema/beans">
+		<constructor-arg>
+			<list>
+				<bean
+					class="org.springframework.security.oauth2.provider.vote.ScopeVoter" />
+				<bean
+					class="org.springframework.security.access.vote.RoleVoter" />
+				<bean
+					class="org.springframework.security.access.vote.AuthenticatedVoter" />
+
+				<bean
+					class="org.springframework.security.web.access.expression.WebExpressionVoter">
+					<property name="expressionHandler"
+						ref="oauthWebExpressionHandler" />
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
+	<authentication-manager
+		id="clientAuthenticationManager">
+		<authentication-provider ref="authProvider" />
+	</authentication-manager>
+	<beans:bean id="oauthAuthenticationEntryPoint"
+		class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint" />
+	<beans:bean id="authProvider"
+		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<beans:property name="userDetailsService"
+			ref="customUserDetailsService" />
+		<beans:property name="passwordEncoder"
+			ref="passwordEncoder" />
+	</beans:bean>
+	<beans:bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<beans:constructor-arg name="strength"
+			value="11" />
+	</beans:bean>
+
+	<beans:bean id="customUserDetailsService"
+		class="ca.uhn.fhir.to.jpa.mihin.serviceImpl.CustomUserDetailsService" />
+	<beans:bean id="customSuccessHandler"
+		class="ca.uhn.fhir.to.jpa.mihin.security.CustomSuccessHandler" />
+	<beans:bean id="oauthAccessDeniedHandler"
+		class="org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler" />
+	<oauth:resource-server id="resourceServerFilter"
+		token-services-ref="customTokenServices" />
+
+	<oauth:expression-handler
+		id="oauthExpressionHandler" />
+
+	<oauth:web-expression-handler
+		id="oauthWebExpressionHandler" />
+	<beans:bean id="customFilter"
+		class="ca.uhn.fhir.to.jpa.mihin.security.CustomFilter" />
+	-->
+	<!-- <beans:bean id="jwtSigningKey" class="java.lang.String"> <beans:constructor-arg 
+		value="jwtSigningKey" /> </beans:bean> -->
+<!-- 	<debug /> -->
+</beans:beans>

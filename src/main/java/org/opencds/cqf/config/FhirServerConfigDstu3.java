@@ -1,5 +1,13 @@
 package org.opencds.cqf.config;
 
+import java.io.File;
+import java.util.Properties;
+
+import javax.naming.NamingException;
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
+
+
 import ca.uhn.fhir.jpa.config.BaseJavaConfigDstu3;
 import ca.uhn.fhir.jpa.dao.DaoConfig;
 import ca.uhn.fhir.jpa.search.DatabaseBackedPagingProvider;
@@ -10,30 +18,43 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.lang3.time.DateUtils;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowire;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
-import java.util.Properties;
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
+import com.typesafe.config.ConfigValue;
+import com.typesafe.config.ConfigValueFactory;
 
 @Configuration
+@ComponentScan(basePackages = "ca.uhn.fhir.to.jpa.mihin")
+@EnableJpaRepositories("ca.uhn.fhir.to.jpa.mihin.repository")
 @Import(FhirServerConfigCommon.class)
 @EnableTransactionManagement()
 public class FhirServerConfigDstu3 extends BaseJavaConfigDstu3 {
 
+	@Autowired
+	private Config properties;
+
+	@Autowired
+	private ResourceLoader resourceLoader;
+	
     @Bean()
     public DaoConfig daoConfig() {
         DaoConfig retVal = new DaoConfig();
-        retVal.setSubscriptionEnabled(true);
-        retVal.setSubscriptionPollDelay(5000);
-        retVal.setSubscriptionPurgeInactiveAfterMillis(DateUtils.MILLIS_PER_HOUR);
+        //retVal.setSubscriptionEnabled(true);
+        //retVal.setSubscriptionPollDelay(5000);
+        //retVal.setSubscriptionPurgeInactiveAfterMillis(DateUtils.MILLIS_PER_HOUR);
         retVal.setAllowMultipleDelete(true);
         retVal.setAllowInlineMatchUrlReferences(true);
         retVal.setAllowExternalReferences(true);
@@ -59,8 +80,17 @@ public class FhirServerConfigDstu3 extends BaseJavaConfigDstu3 {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean retVal = new LocalContainerEntityManagerFactoryBean();
         retVal.setPersistenceUnitName("PU_HapiFhirJpaDstu3");
-        retVal.setDataSource(dataSource());
-        retVal.setPackagesToScan("ca.uhn.fhir.jpa.entity");
+        try {
+        	retVal.setDataSource(dataSource());
+    	} catch( NamingException ne ) {
+	    	System.err.println( "ConfigDstu3 entityManagerFactory() threw NamingException: " + ne.getMessage() );
+	    	//System.err.println( "stack trace:" );
+	    	//System.err.println( " ", ne );
+    	}
+        //retVal.setPackagesToScan("ca.uhn.fhir.jpa.entity");
+        //retVal.setPackagesToScan("ca.uhn.fhir.to.jpa.mihin.domain");
+        //retVal.setPackagesToScan("ca.uhn.fhir.jpa.entity", "ca.uhn.fhir.to.jpa.mihin.domain");
+        retVal.setPackagesToScan( new String[] { "ca.uhn.fhir.jpa.entity", "ca.uhn.fhir.to.jpa.mihin.domain" } );
         retVal.setPersistenceProvider(new HibernatePersistenceProvider());
         retVal.setJpaProperties(jpaProperties());
         return retVal;
@@ -108,6 +138,7 @@ public class FhirServerConfigDstu3 extends BaseJavaConfigDstu3 {
 //    }
 
     // Derby config
+    /*
     @Bean(name = "myPersistenceDataSourceDstu3", destroyMethod = "close")
     public DataSource dataSource() {
         BasicDataSource retVal = new BasicDataSource();
@@ -117,14 +148,37 @@ public class FhirServerConfigDstu3 extends BaseJavaConfigDstu3 {
         retVal.setPassword("");
         return retVal;
     }
+    */
+    
+	@Bean()
+	public DataSource dataSource() throws NamingException {
+		BasicDataSource retVal = new BasicDataSource();
+		retVal.setDriverClassName(properties.getString("org.mihin.fhirpit.driverClassName"));
+		// NOTE: per the dbcp2 javadoc,  this method currently has no effect once the pool has been initialized.
+		// So, trying to set three of them in one application may not be possible.
+		System.out.println("FhirServerConfigDstu3: CQF-RULER fhirpit url: " + properties.getString("org.mihin.fhirpit.url.dstu3") );
+		retVal.setUrl(properties.getString("org.mihin.fhirpit.url.dstu3"));
+		retVal.setUsername(properties.getString("org.mihin.fhirpit.username"));
+		retVal.setPassword(properties.getString("org.mihin.fhirpit.password"));
+		retVal.setMaxIdle(Integer.parseInt(properties.getString("org.mihin.fhirpit.minIdle")));
+		retVal.setMinIdle(Integer.parseInt(properties.getString("org.mihin.fhirpit.maxIdle")));
+		retVal.setMaxOpenPreparedStatements(
+				Integer.parseInt(properties.getString("org.mihin.fhirpit.maxOpenPreparedStatements")));
+		return retVal;
+	}
 
-    // Derby config
+
+    // MySql config
+	@SuppressWarnings("deprecation")
     private Properties jpaProperties() {
         Properties extraProperties = new Properties();
-        extraProperties.put("hibernate.dialect", org.hibernate.dialect.DerbyTenSevenDialect.class.getName());
+        //extraProperties.put("hibernate.dialect", org.hibernate.dialect.DerbyTenSevenDialect.class.getName());
+        //extraProperties.put("hibernate.dialect", org.hibernate.dialect.MySQL5InnoDBDialect.class.getName());
+        extraProperties.put("hibernate.dialect", org.hibernate.dialect.MySQL57Dialect.class.getName());
         extraProperties.put("hibernate.format_sql", "true");
         extraProperties.put("hibernate.show_sql", "false");
-        extraProperties.put("hibernate.hbm2ddl.auto", "update");
+        extraProperties.put("hibernate.hbm2ddl.auto", "create");
+        //extraProperties.put("hibernate.hbm2ddl.auto", "update");
         extraProperties.put("hibernate.jdbc.batch_size", "20");
         extraProperties.put("hibernate.cache.use_query_cache", "false");
         extraProperties.put("hibernate.cache.use_second_level_cache", "false");
@@ -199,4 +253,19 @@ public class FhirServerConfigDstu3 extends BaseJavaConfigDstu3 {
 ////		extraProperties.put("hibernate.search.default.worker.execution", "async");
 //        return extraProperties;
 //    }
+
+	@Bean
+	public Config properties() throws Exception {
+		Config conf = ConfigFactory
+				.parseFile(new File(System.getProperty("catalina.base") + System.getProperty("file.separator")
+						+ "properties" + System.getProperty("file.separator") + "cqf-ruler.properties"));
+		return conf;
+	}
+
+	private Config addNewPropertyToConfig(Config newConf, String decryptedString, String property) {
+		ConfigValue cv = ConfigValueFactory.fromAnyRef(decryptedString);
+		newConf = newConf.withValue(property, cv);
+		return newConf;
+	}
+
 }
