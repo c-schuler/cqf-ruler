@@ -1,6 +1,7 @@
 package org.opencds.cqf.config;
 
 import java.io.File;
+import java.sql.SQLException;
 import java.util.Properties;
 
 import javax.naming.NamingException;
@@ -82,8 +83,10 @@ public class FhirServerConfigR4 extends BaseJavaConfigR4 {
 	    	System.err.println( "ConfigR4 entityManagerFactory() threw NamingException: " + ne.getMessage() );
 	    	//System.err.println( "stack trace:" );
 	    	//System.err.println( " ", ne );
-    	}
-		
+    	} catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         //retVal.setPackagesToScan("ca.uhn.fhir.jpa.entity");
         //retVal.setPackagesToScan("ca.uhn.fhir.jpa.entity", "ca.uhn.fhir.to.jpa.mihin.domain");
         retVal.setPackagesToScan( new String[] { "ca.uhn.fhir.jpa.entity", "ca.uhn.fhir.to.jpa.mihin.domain" } );
@@ -131,9 +134,10 @@ public class FhirServerConfigR4 extends BaseJavaConfigR4 {
 	*/
 	
 	@Bean()
-	public DataSource dataSource() throws NamingException {
+	public DataSource dataSource() throws NamingException, SQLException {
 		BasicDataSource retVal = new BasicDataSource();
-		retVal.setDriverClassName(properties.getString("org.mihin.fhirpit.driverClassName"));
+		//retVal.setDriverClassName(properties.getString("org.mihin.fhirpit.driverClassName"));
+        retVal.setDriver(new com.mysql.jdbc.Driver());
 		// NOTE: per the dbcp2 javadoc,  this method currently has no effect once the pool has been initialized.
 		// So, trying to set three of them in one application may not be possible.
 		System.out.println("FhirServerConfigR4: CQF-RULER fhirpit url: " + properties.getString("org.mihin.fhirpit.url.r4") );
@@ -212,10 +216,11 @@ public class FhirServerConfigR4 extends BaseJavaConfigR4 {
 		return conf;
 	}
 
-	private Config addNewPropertyToConfig(Config newConf, String decryptedString, String property) {
-		ConfigValue cv = ConfigValueFactory.fromAnyRef(decryptedString);
-		newConf = newConf.withValue(property, cv);
-		return newConf;
-	}
+	// TODO - fix newConf.withValue ... withValue doesn't exist
+//	private Config addNewPropertyToConfig(Config newConf, String decryptedString, String property) {
+//		ConfigValue cv = ConfigValueFactory.fromAnyRef(decryptedString);
+//		newConf = newConf.withValue(property, cv);
+//		return newConf;
+//	}
 
 }
